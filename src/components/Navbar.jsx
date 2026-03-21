@@ -21,7 +21,7 @@ export default function Navbar() {
 
         {/* Logo / Institute Name */}
         <Link to="/" className="text-xl font-bold tracking-wide text-white">
-          [Institute Name]
+          Kitgum Institute of Health sciences
         </Link>
 
         {/* Desktop Links */}
