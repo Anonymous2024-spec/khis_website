@@ -22,7 +22,7 @@ export default function Navbar() {
 
         {/* Logo / Institute Name */}
         <Link to="/" className={`text-xl font-bold tracking-wide ${COLORS.textInverted}`}>
-          KIHS
+          Kitgum Institute of Health Sciences
         </Link>
 
         {/* Desktop Links */}
@@ -31,9 +31,9 @@ export default function Navbar() {
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`${TYPOGRAPHY.label} transition-colors hover:text-[var(--color-accent)] ${
+                className={`${TYPOGRAPHY.label} transition-colors hover:text-accent ${
                   location.pathname === link.path
-                    ? 'text-[var(--color-accent)] border-b-2 border-[var(--color-accent)] pb-1'
+                    ? 'text-accent border-b-2 border-accent pb-1'
                     : 'text-gray-200'
                 }`}
               >
@@ -44,10 +44,7 @@ export default function Navbar() {
         </ul>
 
         {/* Apply Button — desktop */}
-        <Link
-          to="/apply"
-          className={`hidden md:inline-block ${BUTTONS.primary}`}
-        >
+        <Link to="/apply" className={`hidden md:inline-block ${BUTTONS.primary}`}>
           Apply Now
         </Link>
 
@@ -68,10 +65,8 @@ export default function Navbar() {
               key={link.path}
               to={link.path}
               onClick={() => setMenuOpen(false)}
-              className={`${TYPOGRAPHY.label} transition-colors hover:text-[var(--color-accent)] ${
-                location.pathname === link.path
-                  ? 'text-[var(--color-accent)]'
-                  : 'text-gray-200'
+              className={`${TYPOGRAPHY.label} transition-colors hover:text-accent ${
+                location.pathname === link.path ? 'text-accent' : 'text-gray-200'
               }`}
             >
               {link.label}
@@ -91,8 +86,9 @@ export default function Navbar() {
 }
 ```
 
-Check your browser — the navbar should look exactly the same as before but now everything is driven by the constants. Let me know when it looks good and we'll move on to building the Footer!
+Check your browser and let me know if it looks right now!
 
 ---
 ```
 git add .
+git commit -m "fix: update constants and Navbar to use Tailwind v4 theme utility classes"
