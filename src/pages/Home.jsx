@@ -1,7 +1,9 @@
-import CoursesSection from "../components/CoursesSection";
-import HeroSection from "../components/HeroSection";
-import StatsBanner from "../components/StatsBanner";
-import WhyChooseUs from "../components/WhyChooseUs";
+import HeroSection from '../components/HeroSection'
+import StatsBanner from '../components/StatsBanner'
+import CoursesSection from '../components/CoursesSection'
+import WhyChooseUs from '../components/WhyChooseUs'
+import NewsSection from '../components/NewsSection'
+import CTABlock from '../components/CTABlock'
 
 export default function Home() {
   return (
@@ -9,7 +11,10 @@ export default function Home() {
       <HeroSection />
       <StatsBanner />
       <CoursesSection />
-      <WhyChooseUs/>
+      <WhyChooseUs />
+      <NewsSection />
+      <CTABlock />
     </div>
-  );
+  )
 }
+
