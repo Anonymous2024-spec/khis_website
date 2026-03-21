@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { COLORS, TYPOGRAPHY, BUTTONS, LAYOUT } from '../constants'
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -16,12 +17,12 @@ export default function Navbar() {
   const location = useLocation()
 
   return (
-    <nav className="bg-blue-950 text-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className={`${COLORS.primaryDarkBg} ${COLORS.textInverted} shadow-md sticky top-0 z-50`}>
+      <div className={`${LAYOUT.container} px-6 py-4 flex items-center justify-between`}>
 
         {/* Logo / Institute Name */}
-        <Link to="/" className="text-xl font-bold tracking-wide text-white">
-          Kitgum Institute of Health sciences
+        <Link to="/" className={`text-xl font-bold tracking-wide ${COLORS.textInverted}`}>
+          KIHS
         </Link>
 
         {/* Desktop Links */}
@@ -30,8 +31,10 @@ export default function Navbar() {
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-amber-400 ${
-                  location.pathname === link.path ? 'text-amber-400 border-b-2 border-amber-400 pb-1' : 'text-gray-200'
+                className={`${TYPOGRAPHY.label} transition-colors hover:text-[var(--color-accent)] ${
+                  location.pathname === link.path
+                    ? 'text-[var(--color-accent)] border-b-2 border-[var(--color-accent)] pb-1'
+                    : 'text-gray-200'
                 }`}
               >
                 {link.label}
@@ -43,14 +46,14 @@ export default function Navbar() {
         {/* Apply Button — desktop */}
         <Link
           to="/apply"
-          className="hidden md:inline-block bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold text-sm px-5 py-2 rounded-md transition-colors"
+          className={`hidden md:inline-block ${BUTTONS.primary}`}
         >
           Apply Now
         </Link>
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden text-white"
+          className={`md:hidden ${COLORS.textInverted}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -59,14 +62,16 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-blue-900 px-6 pb-6 flex flex-col gap-4">
+        <div className={`md:hidden ${COLORS.primaryBg} px-6 pb-6 flex flex-col gap-4`}>
           {navLinks.map(link => (
             <Link
               key={link.path}
               to={link.path}
               onClick={() => setMenuOpen(false)}
-              className={`text-sm font-medium transition-colors hover:text-amber-400 ${
-                location.pathname === link.path ? 'text-amber-400' : 'text-gray-200'
+              className={`${TYPOGRAPHY.label} transition-colors hover:text-[var(--color-accent)] ${
+                location.pathname === link.path
+                  ? 'text-[var(--color-accent)]'
+                  : 'text-gray-200'
               }`}
             >
               {link.label}
@@ -75,7 +80,7 @@ export default function Navbar() {
           <Link
             to="/apply"
             onClick={() => setMenuOpen(false)}
-            className="bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold text-sm px-5 py-2 rounded-md text-center transition-colors"
+            className={`${BUTTONS.primary} text-center`}
           >
             Apply Now
           </Link>
@@ -84,4 +89,10 @@ export default function Navbar() {
     </nav>
   )
 }
+```
 
+Check your browser — the navbar should look exactly the same as before but now everything is driven by the constants. Let me know when it looks good and we'll move on to building the Footer!
+
+---
+```
+git add .
