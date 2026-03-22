@@ -1,18 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Courses from "./pages/Courses";
-import Apply from "./pages/Apply";
-import News from "./pages/News";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Partners from "./pages/Partners";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Courses from './pages/Courses'
+import Apply from './pages/Apply'
+import News from './pages/News'
+import Gallery from './pages/Gallery'
+import Contact from './pages/Contact'
+import Partners from './pages/Partners'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <main>
         <Routes>
@@ -28,7 +30,8 @@ function App() {
       </main>
       <Footer />
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
+
