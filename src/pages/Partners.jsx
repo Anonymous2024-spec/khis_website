@@ -1,6 +1,5 @@
 import { Globe, HandshakeIcon, Award, ExternalLink } from "lucide-react";
 import CTABlock from "../components/CTABlock";
-import PageTitle from "../components/PageTitle";
 import usePageTitle from '../hooks/usePageTitle'
 
 const partners = [
