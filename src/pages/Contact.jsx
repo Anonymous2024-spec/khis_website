@@ -154,7 +154,7 @@ export default function Contact() {
                   Thank you for reaching out. We have received your message and
                   will get back to you shortly. You can also call us directly on{" "}
                   <span className="font-semibold text-blue-950">
-                    0761150846
+                    +256 777 683228
                   </span>
                   .
                 </p>

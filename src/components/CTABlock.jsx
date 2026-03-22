@@ -27,7 +27,7 @@ export default function CTABlock() {
           </Link>
 
           <a
-            href="tel:0761150846"
+            href="tel:+256 777 683228"
             className="border-2 border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-blue-950 font-semibold px-6 py-3 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <PhoneCall size={16} /> Call Us
