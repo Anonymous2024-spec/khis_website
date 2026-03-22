@@ -1,74 +1,121 @@
-import { Link } from 'react-router-dom'
-import { Clock, ChevronRight, FlaskConical, Pill } from 'lucide-react'
+import { Link } from "react-router-dom";
+import {
+  Clock,
+  ChevronRight,
+  FlaskConical,
+  Pill,
+  CheckCircle,
+} from "lucide-react";
 
-const icons = {
-  'Medical Laboratory Technology': <FlaskConical size={24} className="text-amber-400" />,
-  'Pharmacy': <Pill size={24} className="text-amber-400" />,
-}
+const courseStyles = {
+  "Medical Laboratory Technology": {
+    gradient: "from-blue-950 via-blue-900 to-blue-800",
+    badge: "bg-amber-500 text-blue-950",
+    icon: <FlaskConical size={28} className="text-amber-400" />,
+    accent: "from-amber-400 to-amber-500",
+  },
+  Pharmacy: {
+    gradient: "from-slate-900 via-blue-950 to-slate-800",
+    badge: "bg-amber-500 text-blue-950",
+    icon: <Pill size={28} className="text-amber-400" />,
+    accent: "from-amber-400 to-amber-500",
+  },
+};
 
 export default function CourseCard({ course }) {
-  const iconKey = Object.keys(icons).find(key => course.title.includes(key))
+  const styleKey = Object.keys(courseStyles).find((key) =>
+    course.title.includes(key),
+  );
+  const style =
+    courseStyles[styleKey] || courseStyles["Medical Laboratory Technology"];
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-6 flex flex-col gap-4 hover:shadow-lg hover:border-amber-400 transition-all duration-200">
-
-      {/* Top Row */}
-      <div className="flex items-start justify-between">
-        <div className="bg-blue-50 p-3 rounded-md">
-          {icons[iconKey]}
-        </div>
-        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-          course.type === 'Diploma'
-            ? 'bg-blue-100 text-blue-800'
-            : 'bg-amber-100 text-amber-800'
-        }`}>
-          {course.type}
-        </span>
-      </div>
-
-      {/* Title */}
-      <h3 className="text-slate-900 font-semibold text-base leading-snug">
-        {course.title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-slate-500 text-sm leading-relaxed flex-1">
-        {course.description}
-      </p>
-
-      {/* Duration & Fee */}
-      <div className="flex items-center justify-between text-sm border-t border-slate-100 pt-4">
-        <div className="flex items-center gap-2 text-slate-500">
-          <Clock size={14} className="text-amber-400" />
-          {course.duration}
-        </div>
-        <span className="text-blue-950 font-semibold">
-          UGX {course.fee} / yr
-        </span>
-      </div>
-
-      {/* Requirements */}
-      <div className="flex flex-col gap-1">
-        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
-          Entry Requirements
-        </p>
-        <ul className="flex flex-col gap-1">
-          {course.requirements.map((req, i) => (
-            <li key={i} className="text-xs text-slate-500 flex items-start gap-2">
-              <span className="text-amber-400 mt-0.5">•</span>
-              {req}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* CTA */}
-      <Link
-        to="/apply"
-        className="mt-auto flex items-center justify-center gap-2 bg-blue-950 hover:bg-blue-900 text-white text-sm font-semibold py-2.5 rounded-md transition-colors duration-200"
+    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+      {/* Top Banner */}
+      <div
+        className={`bg-gradient-to-br ${style.gradient} px-6 pt-8 pb-10 relative overflow-hidden`}
       >
-        Apply for this Course <ChevronRight size={16} />
-      </Link>
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
+
+        {/* Type Badge */}
+        <div className="flex items-start justify-between mb-6 relative z-10">
+          <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
+            {style.icon}
+          </div>
+          <span
+            className={`text-xs font-bold px-3 py-1.5 rounded-full ${style.badge} shadow-md`}
+          >
+            {course.type}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-white font-bold text-lg leading-snug relative z-10 pr-4">
+          {course.title}
+        </h3>
+
+        {/* Accent line */}
+        <div
+          className={`mt-4 h-1 w-16 rounded-full bg-gradient-to-r ${style.accent}`}
+        />
+      </div>
+
+      {/* Overlap stats bar */}
+      <div className="mx-4 -mt-5 bg-white rounded-xl shadow-lg border border-slate-100 px-4 py-3 flex items-center justify-between z-10 relative">
+        <div className="flex flex-col items-center gap-0.5">
+          <p className="text-blue-950 font-bold text-sm">{course.duration}</p>
+          <p className="text-slate-400 text-xs">Duration</p>
+        </div>
+        <div className="w-px h-8 bg-slate-200" />
+        <div className="flex flex-col items-center gap-0.5">
+          <p className="text-blue-950 font-bold text-sm">UGX {course.fee}</p>
+          <p className="text-slate-400 text-xs">Per Year</p>
+        </div>
+        <div className="w-px h-8 bg-slate-200" />
+        <div className="flex flex-col items-center gap-0.5">
+          <p className="text-blue-950 font-bold text-sm">UNEB</p>
+          <p className="text-slate-400 text-xs">Accredited</p>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="px-6 pt-5 pb-6 flex flex-col gap-4 flex-1">
+        {/* Description */}
+        <p className="text-slate-500 text-sm leading-relaxed">
+          {course.description}
+        </p>
+
+        {/* Requirements */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">
+            Entry Requirements
+          </p>
+          <ul className="flex flex-col gap-1.5">
+            {course.requirements.map((req, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2 text-xs text-slate-500"
+              >
+                <CheckCircle
+                  size={13}
+                  className="text-amber-400 shrink-0 mt-0.5"
+                />
+                {req}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* CTA */}
+        <Link
+          to="/apply"
+          className="mt-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-950 to-blue-900 hover:from-amber-500 hover:to-amber-400 text-white hover:text-blue-950 font-semibold py-3 rounded-xl transition-all duration-300 text-sm group-hover:shadow-md"
+        >
+          Apply for this Course <ChevronRight size={15} />
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
