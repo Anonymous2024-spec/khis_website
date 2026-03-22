@@ -1,51 +1,76 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { CheckCircle, ChevronRight, ChevronLeft, User, BookOpen, FileText, Users } from 'lucide-react'
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  CheckCircle,
+  ChevronRight,
+  ChevronLeft,
+  User,
+  BookOpen,
+  FileText,
+  Users,
+} from "lucide-react";
+import usePageTitle from "../hooks/usePageTitle";
 
 const steps = [
-  { id: 1, label: 'Personal Info', icon: <User size={16} /> },
-  { id: 2, label: 'Qualifications', icon: <BookOpen size={16} /> },
-  { id: 3, label: 'Next of Kin', icon: <Users size={16} /> },
-  { id: 4, label: 'Documents', icon: <FileText size={16} /> },
-]
+  { id: 1, label: "Personal Info", icon: <User size={16} /> },
+  { id: 2, label: "Qualifications", icon: <BookOpen size={16} /> },
+  { id: 3, label: "Next of Kin", icon: <Users size={16} /> },
+  { id: 4, label: "Documents", icon: <FileText size={16} /> },
+];
 
 const courseOptions = [
-  'Diploma in Medical Laboratory Technology',
-  'Diploma in Pharmacy',
-  'Certificate in Medical Laboratory Technology',
-  'Certificate in Pharmacy',
-]
+  "Diploma in Medical Laboratory Technology",
+  "Diploma in Pharmacy",
+  "Certificate in Medical Laboratory Technology",
+  "Certificate in Pharmacy",
+];
 
 export default function Apply() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({})
+  usePageTitle("Apply Now");
+  const [currentStep, setCurrentStep] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm()
+  } = useForm();
 
   const stepFields = {
-    1: ['fullName', 'dateOfBirth', 'nationalId', 'email', 'phone', 'gender', 'course'],
-    2: ['oLevelSchool', 'oLevelYear', 'oLevelGrade', 'aLevelSchool', 'aLevelYear', 'aLevelGrade'],
-    3: ['kinName', 'kinRelationship', 'kinPhone', 'kinAddress'],
+    1: [
+      "fullName",
+      "dateOfBirth",
+      "nationalId",
+      "email",
+      "phone",
+      "gender",
+      "course",
+    ],
+    2: [
+      "oLevelSchool",
+      "oLevelYear",
+      "oLevelGrade",
+      "aLevelSchool",
+      "aLevelYear",
+      "aLevelGrade",
+    ],
+    3: ["kinName", "kinRelationship", "kinPhone", "kinAddress"],
     4: [],
-  }
+  };
 
   const handleNext = async () => {
-    const valid = await trigger(stepFields[currentStep])
-    if (valid) setCurrentStep(prev => prev + 1)
-  }
+    const valid = await trigger(stepFields[currentStep]);
+    if (valid) setCurrentStep((prev) => prev + 1);
+  };
 
-  const handleBack = () => setCurrentStep(prev => prev - 1)
+  const handleBack = () => setCurrentStep((prev) => prev - 1);
 
   const onSubmit = (data) => {
-    setFormData(data)
-    setSubmitted(true)
-  }
+    setFormData(data);
+    setSubmitted(true);
+  };
 
   if (submitted) {
     return (
@@ -54,41 +79,50 @@ export default function Apply() {
           <div className="bg-green-100 p-4 rounded-full">
             <CheckCircle size={40} className="text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900">Application Submitted!</h2>
+          <h2 className="text-2xl font-bold text-slate-900">
+            Application Submitted!
+          </h2>
           <p className="text-slate-500 text-sm leading-relaxed">
-            Thank you for applying to Kitgum Institute of Health Sciences. We have received your application and will be in touch shortly. Please call us on <span className="font-semibold text-blue-950">0761150846</span> for any inquiries.
+            Thank you for applying to Kitgum Institute of Health Sciences. We
+            have received your application and will be in touch shortly. Please
+            call us on{" "}
+            <span className="font-semibold text-blue-950">0761150846</span> for
+            any inquiries.
           </p>
           <div className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 w-full">
             <p className="text-sm text-slate-600">
-              <span className="font-semibold text-amber-600">Course Applied: </span>
+              <span className="font-semibold text-amber-600">
+                Course Applied:{" "}
+              </span>
               {formData.course}
             </p>
           </div>
           <button
-            onClick={() => { setSubmitted(false); setCurrentStep(1) }}
+            onClick={() => {
+              setSubmitted(false);
+              setCurrentStep(1);
+            }}
             className="bg-blue-950 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 w-full"
           >
             Submit Another Application
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div>
-
       {/* Page Header */}
       <section className="bg-blue-950 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
           <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest">
             Admissions 2026/2027
           </span>
-          <h1 className="text-4xl font-bold text-white">
-            Apply Now
-          </h1>
+          <h1 className="text-4xl font-bold text-white">Apply Now</h1>
           <p className="text-gray-300 text-base max-w-2xl">
-            Fill in the form below to apply for a program at Kitgum Institute of Health Sciences. Classes commence July 2026.
+            Fill in the form below to apply for a program at Kitgum Institute of
+            Health Sciences. Classes commence July 2026.
           </p>
         </div>
       </section>
@@ -96,31 +130,42 @@ export default function Apply() {
       {/* Form */}
       <section className="bg-slate-50 py-16 px-6">
         <div className="max-w-3xl mx-auto flex flex-col gap-8">
-
           {/* Stepper */}
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center flex-1">
                 <div className="flex flex-col items-center gap-1">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-200 ${
-                    currentStep === step.id
-                      ? 'bg-blue-950 text-white'
-                      : currentStep > step.id
-                      ? 'bg-amber-500 text-blue-950'
-                      : 'bg-white border-2 border-slate-200 text-slate-400'
-                  }`}>
-                    {currentStep > step.id ? <CheckCircle size={18} /> : step.icon}
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-200 ${
+                      currentStep === step.id
+                        ? "bg-blue-950 text-white"
+                        : currentStep > step.id
+                          ? "bg-amber-500 text-blue-950"
+                          : "bg-white border-2 border-slate-200 text-slate-400"
+                    }`}
+                  >
+                    {currentStep > step.id ? (
+                      <CheckCircle size={18} />
+                    ) : (
+                      step.icon
+                    )}
                   </div>
-                  <span className={`text-xs font-medium hidden sm:block ${
-                    currentStep === step.id ? 'text-blue-950' : 'text-slate-400'
-                  }`}>
+                  <span
+                    className={`text-xs font-medium hidden sm:block ${
+                      currentStep === step.id
+                        ? "text-blue-950"
+                        : "text-slate-400"
+                    }`}
+                  >
                     {step.label}
                   </span>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className={`flex-1 h-0.5 mx-2 transition-colors duration-200 ${
-                    currentStep > step.id ? 'bg-amber-500' : 'bg-slate-200'
-                  }`} />
+                  <div
+                    className={`flex-1 h-0.5 mx-2 transition-colors duration-200 ${
+                      currentStep > step.id ? "bg-amber-500" : "bg-slate-200"
+                    }`}
+                  />
                 )}
               </div>
             ))}
@@ -129,7 +174,6 @@ export default function Apply() {
           {/* Form Card */}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="bg-white border border-slate-200 rounded-lg p-8 flex flex-col gap-6">
-
               {/* Step 1 — Personal Info */}
               {currentStep === 1 && (
                 <div className="flex flex-col gap-6">
@@ -143,15 +187,19 @@ export default function Apply() {
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register('fullName', { required: 'Full name is required' })}
+                      {...register("fullName", {
+                        required: "Full name is required",
+                      })}
                       type="text"
                       placeholder="Enter your full name"
                       className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                        errors.fullName ? 'border-red-400' : 'border-slate-200'
+                        errors.fullName ? "border-red-400" : "border-slate-200"
                       }`}
                     />
                     {errors.fullName && (
-                      <p className="text-xs text-red-500">{errors.fullName.message}</p>
+                      <p className="text-xs text-red-500">
+                        {errors.fullName.message}
+                      </p>
                     )}
                   </div>
 
@@ -162,14 +210,20 @@ export default function Apply() {
                         Date of Birth <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register('dateOfBirth', { required: 'Date of birth is required' })}
+                        {...register("dateOfBirth", {
+                          required: "Date of birth is required",
+                        })}
                         type="date"
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.dateOfBirth ? 'border-red-400' : 'border-slate-200'
+                          errors.dateOfBirth
+                            ? "border-red-400"
+                            : "border-slate-200"
                         }`}
                       />
                       {errors.dateOfBirth && (
-                        <p className="text-xs text-red-500">{errors.dateOfBirth.message}</p>
+                        <p className="text-xs text-red-500">
+                          {errors.dateOfBirth.message}
+                        </p>
                       )}
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -177,9 +231,11 @@ export default function Apply() {
                         Gender <span className="text-red-500">*</span>
                       </label>
                       <select
-                        {...register('gender', { required: 'Gender is required' })}
+                        {...register("gender", {
+                          required: "Gender is required",
+                        })}
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.gender ? 'border-red-400' : 'border-slate-200'
+                          errors.gender ? "border-red-400" : "border-slate-200"
                         }`}
                       >
                         <option value="">Select gender</option>
@@ -187,7 +243,9 @@ export default function Apply() {
                         <option value="Female">Female</option>
                       </select>
                       {errors.gender && (
-                        <p className="text-xs text-red-500">{errors.gender.message}</p>
+                        <p className="text-xs text-red-500">
+                          {errors.gender.message}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -195,18 +253,25 @@ export default function Apply() {
                   {/* National ID */}
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium text-slate-700">
-                      National ID / Passport No. <span className="text-red-500">*</span>
+                      National ID / Passport No.{" "}
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register('nationalId', { required: 'National ID is required' })}
+                      {...register("nationalId", {
+                        required: "National ID is required",
+                      })}
                       type="text"
                       placeholder="Enter your National ID or Passport number"
                       className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                        errors.nationalId ? 'border-red-400' : 'border-slate-200'
+                        errors.nationalId
+                          ? "border-red-400"
+                          : "border-slate-200"
                       }`}
                     />
                     {errors.nationalId && (
-                      <p className="text-xs text-red-500">{errors.nationalId.message}</p>
+                      <p className="text-xs text-red-500">
+                        {errors.nationalId.message}
+                      </p>
                     )}
                   </div>
 
@@ -217,18 +282,23 @@ export default function Apply() {
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register('email', {
-                          required: 'Email is required',
-                          pattern: { value: /^\S+@\S+\.\S+$/, message: 'Enter a valid email' }
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value: /^\S+@\S+\.\S+$/,
+                            message: "Enter a valid email",
+                          },
                         })}
                         type="email"
                         placeholder="you@example.com"
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.email ? 'border-red-400' : 'border-slate-200'
+                          errors.email ? "border-red-400" : "border-slate-200"
                         }`}
                       />
                       {errors.email && (
-                        <p className="text-xs text-red-500">{errors.email.message}</p>
+                        <p className="text-xs text-red-500">
+                          {errors.email.message}
+                        </p>
                       )}
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -236,15 +306,19 @@ export default function Apply() {
                         Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register('phone', { required: 'Phone number is required' })}
+                        {...register("phone", {
+                          required: "Phone number is required",
+                        })}
                         type="tel"
                         placeholder="07XXXXXXXX"
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.phone ? 'border-red-400' : 'border-slate-200'
+                          errors.phone ? "border-red-400" : "border-slate-200"
                         }`}
                       />
                       {errors.phone && (
-                        <p className="text-xs text-red-500">{errors.phone.message}</p>
+                        <p className="text-xs text-red-500">
+                          {errors.phone.message}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -252,21 +326,28 @@ export default function Apply() {
                   {/* Course Selection */}
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium text-slate-700">
-                      Course Applying For <span className="text-red-500">*</span>
+                      Course Applying For{" "}
+                      <span className="text-red-500">*</span>
                     </label>
                     <select
-                      {...register('course', { required: 'Please select a course' })}
+                      {...register("course", {
+                        required: "Please select a course",
+                      })}
                       className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                        errors.course ? 'border-red-400' : 'border-slate-200'
+                        errors.course ? "border-red-400" : "border-slate-200"
                       }`}
                     >
                       <option value="">Select a course</option>
-                      {courseOptions.map(c => (
-                        <option key={c} value={c}>{c}</option>
+                      {courseOptions.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
                       ))}
                     </select>
                     {errors.course && (
-                      <p className="text-xs text-red-500">{errors.course.message}</p>
+                      <p className="text-xs text-red-500">
+                        {errors.course.message}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -286,40 +367,70 @@ export default function Apply() {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">School Name <span className="text-red-500">*</span></label>
+                        <label className="text-sm font-medium text-slate-700">
+                          School Name <span className="text-red-500">*</span>
+                        </label>
                         <input
-                          {...register('oLevelSchool', { required: 'School name is required' })}
+                          {...register("oLevelSchool", {
+                            required: "School name is required",
+                          })}
                           type="text"
                           placeholder="School name"
                           className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                            errors.oLevelSchool ? 'border-red-400' : 'border-slate-200'
+                            errors.oLevelSchool
+                              ? "border-red-400"
+                              : "border-slate-200"
                           }`}
                         />
-                        {errors.oLevelSchool && <p className="text-xs text-red-500">{errors.oLevelSchool.message}</p>}
+                        {errors.oLevelSchool && (
+                          <p className="text-xs text-red-500">
+                            {errors.oLevelSchool.message}
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">Year <span className="text-red-500">*</span></label>
+                        <label className="text-sm font-medium text-slate-700">
+                          Year <span className="text-red-500">*</span>
+                        </label>
                         <input
-                          {...register('oLevelYear', { required: 'Year is required' })}
+                          {...register("oLevelYear", {
+                            required: "Year is required",
+                          })}
                           type="number"
                           placeholder="e.g. 2022"
                           className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                            errors.oLevelYear ? 'border-red-400' : 'border-slate-200'
+                            errors.oLevelYear
+                              ? "border-red-400"
+                              : "border-slate-200"
                           }`}
                         />
-                        {errors.oLevelYear && <p className="text-xs text-red-500">{errors.oLevelYear.message}</p>}
+                        {errors.oLevelYear && (
+                          <p className="text-xs text-red-500">
+                            {errors.oLevelYear.message}
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">Grade / Passes <span className="text-red-500">*</span></label>
+                        <label className="text-sm font-medium text-slate-700">
+                          Grade / Passes <span className="text-red-500">*</span>
+                        </label>
                         <input
-                          {...register('oLevelGrade', { required: 'Grade is required' })}
+                          {...register("oLevelGrade", {
+                            required: "Grade is required",
+                          })}
                           type="text"
                           placeholder="e.g. 8 passes"
                           className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                            errors.oLevelGrade ? 'border-red-400' : 'border-slate-200'
+                            errors.oLevelGrade
+                              ? "border-red-400"
+                              : "border-slate-200"
                           }`}
                         />
-                        {errors.oLevelGrade && <p className="text-xs text-red-500">{errors.oLevelGrade.message}</p>}
+                        {errors.oLevelGrade && (
+                          <p className="text-xs text-red-500">
+                            {errors.oLevelGrade.message}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -331,27 +442,33 @@ export default function Apply() {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">School Name</label>
+                        <label className="text-sm font-medium text-slate-700">
+                          School Name
+                        </label>
                         <input
-                          {...register('aLevelSchool')}
+                          {...register("aLevelSchool")}
                           type="text"
                           placeholder="School name"
                           className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition"
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">Year</label>
+                        <label className="text-sm font-medium text-slate-700">
+                          Year
+                        </label>
                         <input
-                          {...register('aLevelYear')}
+                          {...register("aLevelYear")}
                           type="number"
                           placeholder="e.g. 2024"
                           className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition"
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">Principal Passes</label>
+                        <label className="text-sm font-medium text-slate-700">
+                          Principal Passes
+                        </label>
                         <input
-                          {...register('aLevelGrade')}
+                          {...register("aLevelGrade")}
                           type="text"
                           placeholder="e.g. Biology, Chemistry"
                           className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition"
@@ -359,7 +476,6 @@ export default function Apply() {
                       </div>
                     </div>
                   </div>
-
                 </div>
               )}
 
@@ -375,14 +491,20 @@ export default function Apply() {
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register('kinName', { required: 'Next of kin name is required' })}
+                      {...register("kinName", {
+                        required: "Next of kin name is required",
+                      })}
                       type="text"
                       placeholder="Full name of next of kin"
                       className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                        errors.kinName ? 'border-red-400' : 'border-slate-200'
+                        errors.kinName ? "border-red-400" : "border-slate-200"
                       }`}
                     />
-                    {errors.kinName && <p className="text-xs text-red-500">{errors.kinName.message}</p>}
+                    {errors.kinName && (
+                      <p className="text-xs text-red-500">
+                        {errors.kinName.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -391,9 +513,13 @@ export default function Apply() {
                         Relationship <span className="text-red-500">*</span>
                       </label>
                       <select
-                        {...register('kinRelationship', { required: 'Relationship is required' })}
+                        {...register("kinRelationship", {
+                          required: "Relationship is required",
+                        })}
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.kinRelationship ? 'border-red-400' : 'border-slate-200'
+                          errors.kinRelationship
+                            ? "border-red-400"
+                            : "border-slate-200"
                         }`}
                       >
                         <option value="">Select relationship</option>
@@ -403,21 +529,33 @@ export default function Apply() {
                         <option value="Spouse">Spouse</option>
                         <option value="Other">Other</option>
                       </select>
-                      {errors.kinRelationship && <p className="text-xs text-red-500">{errors.kinRelationship.message}</p>}
+                      {errors.kinRelationship && (
+                        <p className="text-xs text-red-500">
+                          {errors.kinRelationship.message}
+                        </p>
+                      )}
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-medium text-slate-700">
                         Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register('kinPhone', { required: 'Phone number is required' })}
+                        {...register("kinPhone", {
+                          required: "Phone number is required",
+                        })}
                         type="tel"
                         placeholder="07XXXXXXXX"
                         className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                          errors.kinPhone ? 'border-red-400' : 'border-slate-200'
+                          errors.kinPhone
+                            ? "border-red-400"
+                            : "border-slate-200"
                         }`}
                       />
-                      {errors.kinPhone && <p className="text-xs text-red-500">{errors.kinPhone.message}</p>}
+                      {errors.kinPhone && (
+                        <p className="text-xs text-red-500">
+                          {errors.kinPhone.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -426,14 +564,22 @@ export default function Apply() {
                       Physical Address <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register('kinAddress', { required: 'Address is required' })}
+                      {...register("kinAddress", {
+                        required: "Address is required",
+                      })}
                       type="text"
                       placeholder="Village, District"
                       className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                        errors.kinAddress ? 'border-red-400' : 'border-slate-200'
+                        errors.kinAddress
+                          ? "border-red-400"
+                          : "border-slate-200"
                       }`}
                     />
-                    {errors.kinAddress && <p className="text-xs text-red-500">{errors.kinAddress.message}</p>}
+                    {errors.kinAddress && (
+                      <p className="text-xs text-red-500">
+                        {errors.kinAddress.message}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -445,17 +591,27 @@ export default function Apply() {
                     Supporting Documents
                   </h2>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    Please upload copies of the following documents. Accepted formats: PDF, JPG, PNG. Max size: 2MB per file.
+                    Please upload copies of the following documents. Accepted
+                    formats: PDF, JPG, PNG. Max size: 2MB per file.
                   </p>
 
                   {[
-                    { label: 'O-Level Certificate / Result Slip', name: 'oLevelDoc' },
-                    { label: 'A-Level Certificate / Result Slip (Diploma applicants)', name: 'aLevelDoc' },
-                    { label: 'National ID / Passport', name: 'nationalIdDoc' },
-                    { label: 'Passport Photo', name: 'passportPhoto' },
-                  ].map(doc => (
+                    {
+                      label: "O-Level Certificate / Result Slip",
+                      name: "oLevelDoc",
+                    },
+                    {
+                      label:
+                        "A-Level Certificate / Result Slip (Diploma applicants)",
+                      name: "aLevelDoc",
+                    },
+                    { label: "National ID / Passport", name: "nationalIdDoc" },
+                    { label: "Passport Photo", name: "passportPhoto" },
+                  ].map((doc) => (
                     <div key={doc.name} className="flex flex-col gap-1.5">
-                      <label className="text-sm font-medium text-slate-700">{doc.label}</label>
+                      <label className="text-sm font-medium text-slate-700">
+                        {doc.label}
+                      </label>
                       <input
                         {...register(doc.name)}
                         type="file"
@@ -467,8 +623,12 @@ export default function Apply() {
 
                   <div className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3">
                     <p className="text-sm text-slate-600">
-                      <span className="font-semibold text-amber-600">Note: </span>
-                      Applicants with qualifications from outside Uganda must have them equated by UNEB or the Professional Council of Uganda before admission.
+                      <span className="font-semibold text-amber-600">
+                        Note:{" "}
+                      </span>
+                      Applicants with qualifications from outside Uganda must
+                      have them equated by UNEB or the Professional Council of
+                      Uganda before admission.
                     </p>
                   </div>
                 </div>
@@ -484,7 +644,9 @@ export default function Apply() {
                   >
                     <ChevronLeft size={16} /> Back
                   </button>
-                ) : <div />}
+                ) : (
+                  <div />
+                )}
 
                 {currentStep < steps.length ? (
                   <button
@@ -503,11 +665,10 @@ export default function Apply() {
                   </button>
                 )}
               </div>
-
             </div>
           </form>
         </div>
       </section>
     </div>
-  )
+  );
 }

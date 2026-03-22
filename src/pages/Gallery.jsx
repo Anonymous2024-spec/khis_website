@@ -1,6 +1,7 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import CTABlock from "../components/CTABlock";
+import usePageTitle from "../hooks/usePageTitle";
 
 const galleryItems = [
   {
@@ -83,6 +84,7 @@ export default function Gallery() {
 
   return (
     <div>
+      {usePageTitle("Gallery")}
       {/* Page Header */}
       <section className="bg-blue-950 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">

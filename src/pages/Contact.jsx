@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import usePageTitle from "../hooks/usePageTitle";
 
 const contactDetails = [
   {
@@ -62,6 +63,7 @@ export default function Contact() {
 
   return (
     <div>
+      {usePageTitle('Contact Us')}
       {/* Page Header */}
       <section className="bg-blue-950 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">

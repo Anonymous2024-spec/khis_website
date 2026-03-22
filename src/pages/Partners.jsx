@@ -1,5 +1,7 @@
 import { Globe, HandshakeIcon, Award, ExternalLink } from "lucide-react";
 import CTABlock from "../components/CTABlock";
+import PageTitle from "../components/PageTitle";
+import usePageTitle from '../hooks/usePageTitle'
 
 const partners = [
   {
@@ -41,6 +43,7 @@ const stats = [
 export default function Partners() {
   return (
     <div>
+      {usePageTitle('Partners & Funders')}
       {/* Page Header */}
       <section className="bg-blue-950 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">

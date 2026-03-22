@@ -1,36 +1,44 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Clock, ChevronRight, FlaskConical, Pill, CheckCircle } from 'lucide-react'
-import { courses } from '../data/courses'
-import CTABlock from '../components/CTABlock'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Clock,
+  ChevronRight,
+  FlaskConical,
+  Pill,
+  CheckCircle,
+} from "lucide-react";
+import { courses } from "../data/courses";
+import CTABlock from "../components/CTABlock";
+import usePageTitle from "../hooks/usePageTitle";
 
 const icons = {
-  'Medical Laboratory Technology': <FlaskConical size={28} className="text-amber-400" />,
-  'Pharmacy': <Pill size={28} className="text-amber-400" />,
-}
+  "Medical Laboratory Technology": (
+    <FlaskConical size={28} className="text-amber-400" />
+  ),
+  Pharmacy: <Pill size={28} className="text-amber-400" />,
+};
 
 export default function Courses() {
-  const [activeTab, setActiveTab] = useState('All')
-  const tabs = ['All', 'Diploma', 'Certificate']
+  const [activeTab, setActiveTab] = useState("All");
+  const tabs = ["All", "Diploma", "Certificate"];
 
-  const filtered = activeTab === 'All'
-    ? courses
-    : courses.filter(c => c.type === activeTab)
+  const filtered =
+    activeTab === "All" ? courses : courses.filter((c) => c.type === activeTab);
 
   return (
     <div>
-
+     {usePageTitle('Our Courses')}
       {/* Page Header */}
       <section className="bg-blue-950 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
           <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest">
             School of Allied Health Sciences
           </span>
-          <h1 className="text-4xl font-bold text-white">
-            Our Programs
-          </h1>
+          <h1 className="text-4xl font-bold text-white">Our Programs</h1>
           <p className="text-gray-300 text-base max-w-2xl">
-            We offer diploma and certificate programs in Medical Laboratory Technology and Pharmacy, designed to equip students with practical skills for the health sector.
+            We offer diploma and certificate programs in Medical Laboratory
+            Technology and Pharmacy, designed to equip students with practical
+            skills for the health sector.
           </p>
         </div>
       </section>
@@ -38,17 +46,16 @@ export default function Courses() {
       {/* Tabs & Course Cards */}
       <section className="bg-slate-50 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
-
           {/* Tabs */}
           <div className="flex gap-3">
-            {tabs.map(tab => (
+            {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
                   activeTab === tab
-                    ? 'bg-blue-950 text-white'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:border-amber-400 hover:text-amber-500'
+                    ? "bg-blue-950 text-white"
+                    : "bg-white border border-slate-200 text-slate-600 hover:border-amber-400 hover:text-amber-500"
                 }`}
               >
                 {tab}
@@ -58,8 +65,10 @@ export default function Courses() {
 
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filtered.map(course => {
-              const iconKey = Object.keys(icons).find(key => course.title.includes(key))
+            {filtered.map((course) => {
+              const iconKey = Object.keys(icons).find((key) =>
+                course.title.includes(key),
+              );
               return (
                 <div
                   key={course.id}
@@ -75,18 +84,19 @@ export default function Courses() {
                         {course.title}
                       </h2>
                     </div>
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full shrink-0 ${
-                      course.type === 'Diploma'
-                        ? 'bg-blue-800 text-blue-100'
-                        : 'bg-amber-500 text-blue-950'
-                    }`}>
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full shrink-0 ${
+                        course.type === "Diploma"
+                          ? "bg-blue-800 text-blue-100"
+                          : "bg-amber-500 text-blue-950"
+                      }`}
+                    >
                       {course.type}
                     </span>
                   </div>
 
                   {/* Card Body */}
                   <div className="px-6 py-6 flex flex-col gap-6">
-
                     {/* Description */}
                     <p className="text-slate-500 text-sm leading-relaxed">
                       {course.description}
@@ -95,14 +105,18 @@ export default function Courses() {
                     {/* Duration & Fee */}
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-slate-50 rounded-md p-4 flex flex-col gap-1">
-                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Duration</p>
+                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">
+                          Duration
+                        </p>
                         <div className="flex items-center gap-2 text-blue-950 font-bold text-base">
                           <Clock size={16} className="text-amber-400" />
                           {course.duration}
                         </div>
                       </div>
                       <div className="bg-slate-50 rounded-md p-4 flex flex-col gap-1">
-                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Annual Fee</p>
+                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">
+                          Annual Fee
+                        </p>
                         <p className="text-blue-950 font-bold text-base">
                           UGX {course.fee}
                         </p>
@@ -116,8 +130,14 @@ export default function Courses() {
                       </p>
                       <ul className="flex flex-col gap-2">
                         {course.requirements.map((req, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm text-slate-500">
-                            <CheckCircle size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-sm text-slate-500"
+                          >
+                            <CheckCircle
+                              size={16}
+                              className="text-amber-400 shrink-0 mt-0.5"
+                            />
                             {req}
                           </li>
                         ))}
@@ -131,13 +151,11 @@ export default function Courses() {
                     >
                       Apply for this Course <ChevronRight size={16} />
                     </Link>
-
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
-
         </div>
       </section>
 
@@ -150,7 +168,10 @@ export default function Courses() {
                 Important Admission Note
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Applicants with qualifications from outside Uganda must first have them equated by the Uganda National Examination Board (UNEB) or by the Professional Council of Uganda, relevant to those qualifications.
+                Applicants with qualifications from outside Uganda must first
+                have them equated by the Uganda National Examination Board
+                (UNEB) or by the Professional Council of Uganda, relevant to
+                those qualifications.
               </p>
             </div>
             <Link
@@ -165,8 +186,6 @@ export default function Courses() {
 
       {/* CTA */}
       <CTABlock />
-
     </div>
-  )
+  );
 }
-
