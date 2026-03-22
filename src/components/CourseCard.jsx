@@ -30,7 +30,21 @@ export default function CourseCard({ course }) {
     courseStyles[styleKey] || courseStyles["Medical Laboratory Technology"];
 
   return (
-    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+    <div
+      className="group relative bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col"
+      style={{
+        boxShadow:
+          "0 4px 6px -1px rgba(0,0,0,0.1), 0 10px 40px -10px rgba(30,58,95,0.35)",
+      }}
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.boxShadow =
+          "0 8px 12px -1px rgba(0,0,0,0.15), 0 20px 60px -10px rgba(30,58,95,0.5)")
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.boxShadow =
+          "0 4px 6px -1px rgba(0,0,0,0.1), 0 10px 40px -10px rgba(30,58,95,0.35)")
+      }
+    >
       {/* Top Banner */}
       <div
         className={`bg-gradient-to-br ${style.gradient} px-6 pt-8 pb-10 relative overflow-hidden`}
