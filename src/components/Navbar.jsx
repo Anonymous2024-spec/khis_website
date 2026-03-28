@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/kihi-logo.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -20,10 +21,18 @@ export default function Navbar() {
     <nav className="bg-blue-950 text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo / Institute Name */}
-        <Link to="/" className="text-xl font-bold tracking-wide text-white">
-          Kitgum Institute of Health Sciences
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="KIHS Logo"
+            className="h-10 w-10 object-contain"
+          />
+          <span className="text-white font-bold text-sm leading-tight hidden lg:block">
+            Kitgum Institute of
+            <br />
+            Health Sciences
+          </span>
         </Link>
-
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -41,7 +50,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
         {/* Apply Button — desktop */}
         <Link
           to="/apply"
@@ -49,7 +57,6 @@ export default function Navbar() {
         >
           Apply Now
         </Link>
-
         {/* Mobile menu toggle */}
         <button
           className="md:hidden text-white"
