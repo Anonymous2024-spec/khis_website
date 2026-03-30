@@ -4,6 +4,8 @@ import { ArrowRight, FlaskConical, Award } from 'lucide-react'
 export default function HeroSection() {
   return (
     <section className="bg-blue-950 text-white">
+       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
       <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row items-center gap-12">
 
         {/* Left — Text Content */}

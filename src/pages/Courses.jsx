@@ -29,7 +29,9 @@ export default function Courses() {
     <div>
      {usePageTitle('Our Courses')}
       {/* Page Header */}
-      <section className="bg-blue-950 py-16 px-6">
+      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
           <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest">
             School of Allied Health Sciences
