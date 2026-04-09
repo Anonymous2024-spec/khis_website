@@ -87,7 +87,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3 text-sm text-gray-400">
               <Mail size={16} className="text-amber-400 shrink-0" />
-              titolutwa@gmail.com
+              info@kihs.ac.ug
             </li>
           </ul>
 

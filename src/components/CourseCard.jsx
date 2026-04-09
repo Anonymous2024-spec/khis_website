@@ -89,7 +89,7 @@ export default function CourseCard({ course }) {
         </div>
         <div className="w-px h-8 bg-slate-200" />
         <div className="flex flex-col items-center gap-0.5">
-          <p className="text-blue-950 font-bold text-sm">UNEB</p>
+          <p className="text-blue-950 font-bold text-sm">UHPAB</p>
           <p className="text-slate-400 text-xs">Accredited</p>
         </div>
       </div>

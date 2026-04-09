@@ -11,8 +11,8 @@ const contactDetails = [
   {
     icon: <Phone size={20} className="text-amber-400" />,
     label: "Phone",
-    value: "0761150846",
-    href: "tel:0761150846",
+    value: "+256 777 683228",
+    href: "tel:+256777683228",
   },
   {
     icon: <Mail size={20} className="text-amber-400" />,

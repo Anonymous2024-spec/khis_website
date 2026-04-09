@@ -199,7 +199,7 @@ export default function Partners() {
                     className="flex items-center gap-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm"
                   >
                     <Phone size={16} className="text-amber-500" />
-                    Call Us — 0761150846
+                    Call Us — +256 777 683228
                   </a>
                 </div>
               </div>
