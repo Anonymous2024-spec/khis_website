@@ -27,9 +27,9 @@ describe('Courses page', () => {
 
   it('shows all 4 courses by default', () => {
     renderCourses()
-    expect(screen.getByText('Diploma in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Diploma in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Diploma in Pharmacy')).toBeInTheDocument()
-    expect(screen.getByText('Certificate in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Certificate in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Certificate in Pharmacy')).toBeInTheDocument()
   })
 
@@ -38,7 +38,7 @@ describe('Courses page', () => {
     const user = userEvent.setup()
     const diplomaButton = screen.getAllByRole('button').find(b => b.textContent === 'Diploma')
     await user.click(diplomaButton)
-    expect(screen.getByText('Diploma in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Diploma in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Diploma in Pharmacy')).toBeInTheDocument()
     expect(screen.queryByText('Certificate in Pharmacy')).not.toBeInTheDocument()
   })
@@ -48,7 +48,7 @@ describe('Courses page', () => {
     const user = userEvent.setup()
     const certButton = screen.getAllByRole('button').find(b => b.textContent === 'Certificate')
     await user.click(certButton)
-    expect(screen.getByText('Certificate in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Certificate in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Certificate in Pharmacy')).toBeInTheDocument()
     expect(screen.queryByText('Diploma in Pharmacy')).not.toBeInTheDocument()
   })

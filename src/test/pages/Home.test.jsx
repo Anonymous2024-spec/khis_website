@@ -45,9 +45,9 @@ describe('Home page', () => {
 
   it('renders all 4 course cards', () => {
     renderHome()
-    expect(screen.getByText('Diploma in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Diploma in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Diploma in Pharmacy')).toBeInTheDocument()
-    expect(screen.getByText('Certificate in Medical Laboratory Technology')).toBeInTheDocument()
+    expect(screen.getByText('Certificate in Medical Laboratory Techniques')).toBeInTheDocument()
     expect(screen.getByText('Certificate in Pharmacy')).toBeInTheDocument()
   })
 
