@@ -21,7 +21,7 @@ const leadership = [
     name: "[HOD Name]",
     role: "Head of Department — Medical Laboratory",
     description:
-      "Leads the medical laboratory technology department and clinical training.",
+      "Leads the medical laboratory techniques department and clinical training.",
     initial: "H",
   },
   {

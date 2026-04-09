@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const courseStyles = {
-  "Medical Laboratory Technology": {
+  "Medical Laboratory Techniques": {
     gradient: "from-blue-950 via-blue-900 to-blue-800",
     badge: "bg-amber-500 text-blue-950",
     icon: <FlaskConical size={28} className="text-amber-400" />,
@@ -27,7 +27,7 @@ export default function CourseCard({ course }) {
     course.title.includes(key),
   );
   const style =
-    courseStyles[styleKey] || courseStyles["Medical Laboratory Technology"];
+    courseStyles[styleKey] || courseStyles["Medical Laboratory Techniques"];
 
   return (
     <div

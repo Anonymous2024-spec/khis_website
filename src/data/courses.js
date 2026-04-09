@@ -2,7 +2,7 @@ export const courses = [
   {
     id: 1,
     type: 'Diploma',
-    title: 'Diploma in Medical Laboratory Technology',
+    title: 'Diploma in Medical Laboratory Techniques',
     duration: '3 Years',
     fee: '2,800,000/=',
     requirements: [
@@ -30,7 +30,7 @@ export const courses = [
   {
     id: 3,
     type: 'Certificate',
-    title: 'Certificate in Medical Laboratory Technology',
+    title: 'Certificate in Medical Laboratory Techniques',
     duration: '2 Years',
     fee: '2,800,000/=',
     requirements: [

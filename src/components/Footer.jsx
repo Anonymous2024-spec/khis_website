@@ -1,37 +1,43 @@
-import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram } from 'lucide-react'
+import { Link } from "react-router-dom";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+} from "lucide-react";
 
 const quickLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Courses', path: '/courses' },
-  { label: 'News', path: '/news' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Contact', path: '/contact' },
-  { label: 'Partners', path: '/partners' },
-]
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Courses", path: "/courses" },
+  { label: "News", path: "/news" },
+  { label: "Gallery", path: "/gallery" },
+  { label: "Contact", path: "/contact" },
+  { label: "Partners", path: "/partners" },
+];
 
 const courses = [
-  'Diploma in Medical Laboratory Technology',
-  'Diploma in Pharmacy',
-  'Certificate in Medical Laboratory Technology',
-  'Certificate in Pharmacy',
-]
+  "Diploma in Medical Laboratory Techniques",
+  "Diploma in Pharmacy",
+  "Certificate in Medical Laboratory Techniques",
+  "Certificate in Pharmacy",
+];
 
 export default function Footer() {
   return (
     <footer className="bg-blue-950 text-gray-200">
-
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-
         {/* Column 1 — About */}
         <div className="flex flex-col gap-4">
           <h3 className="text-white text-lg font-bold tracking-wide">
             Kitgum Institute of Health Sciences
           </h3>
           <p className="text-sm text-gray-400 leading-relaxed">
-            A tertiary private medical training institution dedicated to training highly skilled and motivated medical professionals.
+            A tertiary private medical training institution dedicated to
+            training highly skilled and motivated medical professionals.
           </p>
           <p className="text-amber-400 font-semibold text-sm italic">
             Dedicated to Excellence
@@ -42,7 +48,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <h4 className="text-white text-base font-semibold">Quick Links</h4>
           <ul className="flex flex-col gap-2">
-            {quickLinks.map(link => (
+            {quickLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
@@ -59,7 +65,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <h4 className="text-white text-base font-semibold">Our Courses</h4>
           <ul className="flex flex-col gap-2">
-            {courses.map(course => (
+            {courses.map((course) => (
               <li key={course} className="text-sm text-gray-400">
                 {course}
               </li>
@@ -87,13 +93,22 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-4 mt-2">
-            <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-amber-400 transition-colors"
+            >
               <Facebook size={18} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-amber-400 transition-colors"
+            >
               <Twitter size={18} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-amber-400 transition-colors"
+            >
               <Instagram size={18} />
             </a>
           </div>
@@ -104,15 +119,14 @@ export default function Footer() {
       <div className="border-t border-blue-900 py-6 px-6">
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-1 text-center">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Kitgum Institute of Health Sciences. All rights reserved.
+            © {new Date().getFullYear()} Kitgum Institute of Health Sciences.
+            All rights reserved.
           </p>
           <p className="text-xs text-gray-500">
             School of Allied Health Sciences
           </p>
         </div>
       </div>
-
     </footer>
-  )
+  );
 }
-
