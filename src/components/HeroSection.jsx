@@ -77,7 +77,7 @@ export default function HeroSection() {
           </div>
 
           <div className="bg-amber-500 rounded-lg p-6 flex flex-col gap-2 sm:col-span-2">
-            <p className="text-blue-950 font-bold text-lg">UGX 2,800,000/=</p>
+            <p className="text-blue-950 font-bold text-lg">UGX 2,400,000/=</p>
             <p className="text-blue-900 text-sm">Annual tuition fee for all Diploma & Certificate programs in Allied Health Sciences.</p>
           </div>
 
