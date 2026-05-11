@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
   CheckCircle,
@@ -8,7 +9,12 @@ import {
   BookOpen,
   FileText,
   Users,
+  ClipboardList,
+  Briefcase,
+  Plus,
+  X,
 } from "lucide-react";
+import { courses } from "../data/courses";
 import usePageTitle from "../hooks/usePageTitle";
 
 const steps = [
@@ -27,16 +33,79 @@ const courseOptions = [
 
 export default function Apply() {
   usePageTitle("Apply Now");
+  const [searchParams] = useSearchParams();
+  const courseParam = searchParams.get("course");
+
+  // Get the selected course object
+  const selectedCourse = courseParam
+    ? courses.find((c) => c.id === parseInt(courseParam))
+    : null;
+
+  const preSelectedCourse = selectedCourse?.title || "";
+
   const [currentStep, setCurrentStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({});
+  const [oLevelSubjects, setOLevelSubjects] = useState([
+    { subject: "", grade: "" },
+  ]);
+  const [aLevelSubjects, setALevelSubjects] = useState([
+    { subject: "", grade: "" },
+  ]);
+
+  // Grade to points mapping (Uganda system)
+  const gradePoints = {
+    A: 4,
+    B: 3,
+    C: 2,
+    D: 1,
+    E: 0,
+  };
+
+  const calculatePoints = (subjects) => {
+    return subjects
+      .filter((s) => s.subject && s.grade)
+      .reduce((total, s) => total + (gradePoints[s.grade] || 0), 0);
+  };
+
+  const addOLevelSubject = () => {
+    setOLevelSubjects([...oLevelSubjects, { subject: "", grade: "" }]);
+  };
+
+  const removeOLevelSubject = (index) => {
+    setOLevelSubjects(oLevelSubjects.filter((_, i) => i !== index));
+  };
+
+  const updateOLevelSubject = (index, field, value) => {
+    const updated = [...oLevelSubjects];
+    updated[index][field] = value;
+    setOLevelSubjects(updated);
+  };
+
+  const addALevelSubject = () => {
+    setALevelSubjects([...aLevelSubjects, { subject: "", grade: "" }]);
+  };
+
+  const removeALevelSubject = (index) => {
+    setALevelSubjects(aLevelSubjects.filter((_, i) => i !== index));
+  };
+
+  const updateALevelSubject = (index, field, value) => {
+    const updated = [...aLevelSubjects];
+    updated[index][field] = value;
+    setALevelSubjects(updated);
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      course: preSelectedCourse,
+    },
+  });
 
   const stepFields = {
     1: [
@@ -48,27 +117,30 @@ export default function Apply() {
       "gender",
       "course",
     ],
-    2: [
-      "oLevelSchool",
-      "oLevelYear",
-      "oLevelGrade",
-      "aLevelSchool",
-      "aLevelYear",
-      "aLevelGrade",
-    ],
+    2: ["oLevelSchool", "oLevelYear"],
     3: ["kinName", "kinRelationship", "kinPhone", "kinAddress"],
     4: [],
   };
 
   const handleNext = async () => {
     const valid = await trigger(stepFields[currentStep]);
-    if (valid) setCurrentStep((prev) => prev + 1);
+    if (valid) {
+      console.log(`Moving from step ${currentStep} to ${currentStep + 1}`);
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      console.log(`Validation failed for step ${currentStep}`);
+    }
   };
 
   const handleBack = () => setCurrentStep((prev) => prev - 1);
 
   const onSubmit = (data) => {
-    setFormData(data);
+    console.log("Form submitted");
+    setFormData({
+      ...data,
+      oLevelSubjects,
+      aLevelSubjects,
+    });
     setSubmitted(true);
   };
 
@@ -129,59 +201,213 @@ export default function Apply() {
         </div>
       </section>
 
-      {/* Form */}
-      <section className="bg-slate-50 py-16 px-6">
-        <div className="max-w-3xl mx-auto flex flex-col gap-8">
-          {/* Stepper */}
-          <div className="flex items-center justify-between">
-            {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center flex-1">
-                <div className="flex flex-col items-center gap-1">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-200 ${
-                      currentStep === step.id
-                        ? "bg-blue-950 text-white"
-                        : currentStep > step.id
-                          ? "bg-amber-500 text-blue-950"
-                          : "bg-white border-2 border-slate-200 text-slate-400"
-                    }`}
-                  >
-                    {currentStep > step.id ? (
-                      <CheckCircle size={18} />
-                    ) : (
-                      step.icon
+      {/* Course Details Section - if course is selected */}
+      {selectedCourse && (
+        <section className="bg-gradient-to-b from-slate-50 to-white px-6 py-16 border-b border-slate-200">
+          <div className="max-w-7xl mx-auto">
+            {/* Course Header */}
+            <div className="mb-12">
+              <span className="text-amber-500 text-sm font-semibold uppercase tracking-widest">
+                Course Details
+              </span>
+              <h2 className="text-4xl font-bold text-slate-900 mt-3 mb-4">
+                {selectedCourse.title}
+              </h2>
+              <p className="text-slate-600 text-base max-w-3xl">
+                {selectedCourse.description}
+              </p>
+            </div>
+
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              {/* Left Column - Course Info */}
+              <div className="flex flex-col gap-8">
+                {/* Quick Facts */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="text-sm font-bold text-slate-700 uppercase tracking-widest">
+                    Quick Facts
+                  </h4>
+                  <div className="bg-white rounded-lg p-5 border border-blue-100 shadow-sm">
+                    <p className="text-xs text-slate-500 mb-2">DURATION</p>
+                    <p className="text-xl font-bold text-blue-950">
+                      {selectedCourse.duration}
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-lg p-5 border border-amber-100 shadow-sm">
+                    <p className="text-xs text-slate-500 mb-2">ANNUAL FEE</p>
+                    <p className="text-xl font-bold text-blue-950">
+                      UGX {selectedCourse.fee}
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-lg p-5 border border-slate-100 shadow-sm">
+                    <p className="text-xs text-slate-500 mb-2">COURSE TYPE</p>
+                    <p className="text-xl font-bold text-blue-950">
+                      {selectedCourse.type}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Highlights */}
+                <div>
+                  <h4 className="text-sm font-bold text-slate-700 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <BookOpen size={16} className="text-amber-500" />
+                    Highlights
+                  </h4>
+                  <div className="space-y-2">
+                    {selectedCourse.programHighlights.map((highlight, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-100 text-xs"
+                      >
+                        <CheckCircle
+                          size={16}
+                          className="text-green-600 mt-0.5 flex-shrink-0"
+                        />
+                        <p className="text-slate-700">{highlight}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Requirements */}
+                <div>
+                  <h4 className="text-sm font-bold text-slate-700 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <ClipboardList size={16} className="text-amber-500" />
+                    Requirements
+                  </h4>
+                  <div className="bg-blue-50 rounded-lg border border-blue-100 p-4 space-y-2">
+                    {selectedCourse.requirements.map((req, idx) => (
+                      <p
+                        key={idx}
+                        className="flex items-start gap-2 text-xs text-slate-700"
+                      >
+                        <span className="text-blue-950 font-bold mt-0.5 text-sm">
+                          ✓
+                        </span>
+                        <span>{req}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Career Opportunities */}
+                <div>
+                  <h4 className="text-sm font-bold text-slate-700 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <Briefcase size={16} className="text-amber-500" />
+                    Careers
+                  </h4>
+                  <div className="space-y-2">
+                    {selectedCourse.careerOpportunities.map(
+                      (opportunity, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 p-3 bg-amber-50 rounded-lg border border-amber-100 text-xs"
+                        >
+                          <CheckCircle
+                            size={14}
+                            className="text-amber-600 flex-shrink-0"
+                          />
+                          <p className="text-slate-800 font-medium">
+                            {opportunity}
+                          </p>
+                        </div>
+                      ),
                     )}
                   </div>
-                  <span
-                    className={`text-xs font-medium hidden sm:block ${
-                      currentStep === step.id
-                        ? "text-blue-950"
-                        : "text-slate-400"
-                    }`}
-                  >
-                    {step.label}
-                  </span>
                 </div>
-                {index < steps.length - 1 && (
-                  <div
-                    className={`flex-1 h-0.5 mx-2 transition-colors duration-200 ${
-                      currentStep > step.id ? "bg-amber-500" : "bg-slate-200"
-                    }`}
-                  />
-                )}
               </div>
-            ))}
+
+              {/* Right Column - Form Preview */}
+              <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div className="relative h-48 bg-gradient-to-br from-blue-950 to-blue-900 overflow-hidden">
+                  {selectedCourse?.image && (
+                    <img
+                      src={selectedCourse.image}
+                      alt={selectedCourse.title}
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/20" />
+                </div>
+                <div className="p-6 text-center">
+                  <h4 className="text-lg font-bold text-slate-900 mb-2">
+                    Ready to Apply?
+                  </h4>
+                  <p className="text-sm text-slate-600 mb-6">
+                    Complete the application form below to join our program
+                  </p>
+                  <div className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                    Fill in 4 easy steps
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Form */}
+      <section className="bg-slate-50 py-16 px-6">
+        <div
+          className={`${selectedCourse ? "max-w-6xl" : "max-w-3xl"} mx-auto flex flex-col gap-8`}
+        >
+          {/* Stepper */}
+          <div className="bg-white rounded-lg p-6 border border-slate-200">
+            <div className="flex items-center justify-between">
+              {steps.map((step, index) => (
+                <div key={step.id} className="flex items-center flex-1">
+                  <div className="flex flex-col items-center gap-1">
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-200 ${
+                        currentStep === step.id
+                          ? "bg-blue-950 text-white shadow-lg"
+                          : currentStep > step.id
+                            ? "bg-amber-500 text-blue-950"
+                            : "bg-white border-2 border-slate-200 text-slate-400"
+                      }`}
+                    >
+                      {currentStep > step.id ? (
+                        <CheckCircle size={18} />
+                      ) : (
+                        step.icon
+                      )}
+                    </div>
+                    <span
+                      className={`text-xs font-medium hidden sm:block ${
+                        currentStep === step.id
+                          ? "text-blue-950 font-bold"
+                          : "text-slate-400"
+                      }`}
+                    >
+                      {step.label}
+                    </span>
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div
+                      className={`flex-1 h-0.5 mx-2 transition-colors duration-200 ${
+                        currentStep > step.id ? "bg-amber-500" : "bg-slate-200"
+                      }`}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Form Card */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="bg-white border border-slate-200 rounded-lg p-8 flex flex-col gap-6">
+            <div className="bg-white border border-slate-200 rounded-lg p-8 flex flex-col gap-6 shadow-md">
               {/* Step 1 — Personal Info */}
               {currentStep === 1 && (
                 <div className="flex flex-col gap-6">
-                  <h2 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                    Personal Information
-                  </h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">
+                      Personal Information
+                    </h2>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Tell us about yourself
+                    </p>
+                  </div>
 
                   {/* Full Name */}
                   <div className="flex flex-col gap-1.5">
@@ -358,16 +584,28 @@ export default function Apply() {
               {/* Step 2 — Qualifications */}
               {currentStep === 2 && (
                 <div className="flex flex-col gap-6">
-                  <h2 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                    Previous Qualifications
-                  </h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">
+                      Previous Qualifications
+                    </h2>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Tell us about your academic background
+                    </p>
+                  </div>
 
                   {/* O Level */}
                   <div className="flex flex-col gap-4">
-                    <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
-                      O-Level Results
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                        O-Level Results
+                      </h3>
+                      <span className="text-xs bg-blue-100 text-blue-950 px-3 py-1 rounded-full font-semibold">
+                        Total Points: {calculatePoints(oLevelSubjects)}
+                      </span>
+                    </div>
+
+                    {/* School and Year */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-sm font-medium text-slate-700">
                           School Name <span className="text-red-500">*</span>
@@ -412,37 +650,103 @@ export default function Apply() {
                           </p>
                         )}
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">
-                          Grade / Passes <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          {...register("oLevelGrade", {
-                            required: "Grade is required",
-                          })}
-                          type="text"
-                          placeholder="e.g. 8 passes"
-                          className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
-                            errors.oLevelGrade
-                              ? "border-red-400"
-                              : "border-slate-200"
-                          }`}
-                        />
-                        {errors.oLevelGrade && (
-                          <p className="text-xs text-red-500">
-                            {errors.oLevelGrade.message}
-                          </p>
-                        )}
+                    </div>
+
+                    {/* Subjects Table */}
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-slate-300">
+                              <th className="text-left py-2 px-3 font-semibold text-slate-700">
+                                Subject
+                              </th>
+                              <th className="text-left py-2 px-3 font-semibold text-slate-700">
+                                Grade
+                              </th>
+                              <th className="text-center py-2 px-3 font-semibold text-slate-700">
+                                Action
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {oLevelSubjects.map((sub, index) => (
+                              <tr
+                                key={index}
+                                className="border-b border-slate-200"
+                              >
+                                <td className="py-3 px-3">
+                                  <input
+                                    type="text"
+                                    placeholder="e.g. Mathematics"
+                                    value={sub.subject}
+                                    onChange={(e) =>
+                                      updateOLevelSubject(
+                                        index,
+                                        "subject",
+                                        e.target.value,
+                                      )
+                                    }
+                                    className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-950 outline-none"
+                                  />
+                                </td>
+                                <td className="py-3 px-3">
+                                  <select
+                                    value={sub.grade}
+                                    onChange={(e) =>
+                                      updateOLevelSubject(
+                                        index,
+                                        "grade",
+                                        e.target.value,
+                                      )
+                                    }
+                                    className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-950 outline-none"
+                                  >
+                                    <option value="">Select grade</option>
+                                    <option value="A">A (4 points)</option>
+                                    <option value="B">B (3 points)</option>
+                                    <option value="C">C (2 points)</option>
+                                    <option value="D">D (1 point)</option>
+                                    <option value="E">E (0 points)</option>
+                                  </select>
+                                </td>
+                                <td className="py-3 px-3 text-center">
+                                  {oLevelSubjects.length > 1 && (
+                                    <button
+                                      type="button"
+                                      onClick={() => removeOLevelSubject(index)}
+                                      className="text-red-500 hover:text-red-700 transition"
+                                    >
+                                      <X size={16} />
+                                    </button>
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
+                      <button
+                        type="button"
+                        onClick={addOLevelSubject}
+                        className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-950 hover:text-blue-700 transition"
+                      >
+                        <Plus size={16} /> Add Subject
+                      </button>
                     </div>
                   </div>
 
                   {/* A Level */}
                   <div className="flex flex-col gap-4">
-                    <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
-                      A-Level Results (For Diploma applicants)
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                        A-Level Results (For Diploma applicants)
+                      </h3>
+                      <span className="text-xs bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-semibold">
+                        Total Points: {calculatePoints(aLevelSubjects)}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-sm font-medium text-slate-700">
                           School Name
@@ -465,17 +769,89 @@ export default function Apply() {
                           className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition"
                         />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-medium text-slate-700">
-                          Principal Passes
-                        </label>
-                        <input
-                          {...register("aLevelGrade")}
-                          type="text"
-                          placeholder="e.g. Biology, Chemistry"
-                          className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition"
-                        />
+                    </div>
+
+                    {/* Subjects Table */}
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-slate-300">
+                              <th className="text-left py-2 px-3 font-semibold text-slate-700">
+                                Subject
+                              </th>
+                              <th className="text-left py-2 px-3 font-semibold text-slate-700">
+                                Grade
+                              </th>
+                              <th className="text-center py-2 px-3 font-semibold text-slate-700">
+                                Action
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {aLevelSubjects.map((sub, index) => (
+                              <tr
+                                key={index}
+                                className="border-b border-slate-200"
+                              >
+                                <td className="py-3 px-3">
+                                  <input
+                                    type="text"
+                                    placeholder="e.g. Biology"
+                                    value={sub.subject}
+                                    onChange={(e) =>
+                                      updateALevelSubject(
+                                        index,
+                                        "subject",
+                                        e.target.value,
+                                      )
+                                    }
+                                    className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-950 outline-none"
+                                  />
+                                </td>
+                                <td className="py-3 px-3">
+                                  <select
+                                    value={sub.grade}
+                                    onChange={(e) =>
+                                      updateALevelSubject(
+                                        index,
+                                        "grade",
+                                        e.target.value,
+                                      )
+                                    }
+                                    className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-950 outline-none"
+                                  >
+                                    <option value="">Select grade</option>
+                                    <option value="A">A (4 points)</option>
+                                    <option value="B">B (3 points)</option>
+                                    <option value="C">C (2 points)</option>
+                                    <option value="D">D (1 point)</option>
+                                    <option value="E">E (0 points)</option>
+                                  </select>
+                                </td>
+                                <td className="py-3 px-3 text-center">
+                                  {aLevelSubjects.length > 1 && (
+                                    <button
+                                      type="button"
+                                      onClick={() => removeALevelSubject(index)}
+                                      className="text-red-500 hover:text-red-700 transition"
+                                    >
+                                      <X size={16} />
+                                    </button>
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
+                      <button
+                        type="button"
+                        onClick={addALevelSubject}
+                        className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-950 hover:text-blue-700 transition"
+                      >
+                        <Plus size={16} /> Add Subject
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -484,9 +860,14 @@ export default function Apply() {
               {/* Step 3 — Next of Kin */}
               {currentStep === 3 && (
                 <div className="flex flex-col gap-6">
-                  <h2 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                    Next of Kin Details
-                  </h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">
+                      Next of Kin Details
+                    </h2>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Emergency contact information
+                    </p>
+                  </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium text-slate-700">
@@ -589,9 +970,14 @@ export default function Apply() {
               {/* Step 4 — Documents */}
               {currentStep === 4 && (
                 <div className="flex flex-col gap-6">
-                  <h2 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                    Supporting Documents
-                  </h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">
+                      Supporting Documents
+                    </h2>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Upload required documents to complete your application
+                    </p>
+                  </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
                     Please upload copies of the following documents. Accepted
                     formats: PDF, JPG, PNG. Max size: 2MB per file.
@@ -637,12 +1023,12 @@ export default function Apply() {
               )}
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between pt-4 border-t border-slate-100">
+              <div className="flex justify-between gap-4 pt-6 border-t border-slate-100">
                 {currentStep > 1 ? (
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="flex items-center gap-2 border-2 border-slate-200 text-slate-600 hover:border-blue-950 hover:text-blue-950 font-semibold px-6 py-2.5 rounded-md transition-colors duration-200"
+                    className="flex items-center gap-2 px-8 py-3 rounded-lg border-2 border-slate-200 text-slate-700 hover:border-blue-950 hover:text-blue-950 hover:bg-blue-50 font-semibold transition-all duration-200"
                   >
                     <ChevronLeft size={16} /> Back
                   </button>
@@ -654,14 +1040,14 @@ export default function Apply() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white font-semibold px-6 py-2.5 rounded-md transition-colors duration-200"
+                    className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-blue-950 to-blue-900 hover:from-blue-900 hover:to-blue-800 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                   >
                     Next <ChevronRight size={16} />
                   </button>
                 ) : (
                   <button
                     type="submit"
-                    className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold px-6 py-2.5 rounded-md transition-colors duration-200"
+                    className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                   >
                     Submit Application <CheckCircle size={16} />
                   </button>

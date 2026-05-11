@@ -5,14 +5,31 @@ export const courses = [
     title: "Diploma in Medical Laboratory Techniques",
     duration: "3 Years",
     fee: "2,400,000/=",
+    description:
+      "Trains students in laboratory techniques and diagnostic procedures to support clinical medicine.",
+    image: "https://picsum.photos/id/287/800/400",
+    category: "School of Allied Health Sciences",
     requirements: [
       "UCE with at least a D in Biology, Chemistry, Physics, Mathematics and English",
       "UACE with at least a Principal Pass in Biology",
       "Two subsidiary passes in Chemistry, and Physics or Mathematics",
       "Must be 18 years of age or above at time of interview",
     ],
-    description:
-      "Trains students in laboratory techniques and diagnostic procedures to support clinical medicine.",
+    programHighlights: [
+      "Comprehensive training in laboratory diagnostics and specimen handling",
+      "Hands-on practical experience with modern medical equipment and analytical techniques",
+      "Taught by experienced medical laboratory professionals",
+      "Prepares graduates for professional licensing and certification with national health bodies",
+    ],
+    careerOpportunities: [
+      "Medical Laboratory Technologist in hospitals and clinics",
+      "Laboratory Specialist in diagnostic centres",
+      "Blood Bank Technologist",
+      "Field epidemiologist in disease surveillance units",
+      "Research laboratory technician",
+      "Clinical biochemistry specialist",
+    ],
+    relatedCourses: [3],
   },
   {
     id: 2,
@@ -20,14 +37,31 @@ export const courses = [
     title: "Diploma in Pharmacy",
     duration: "3 Years",
     fee: "2,400,000/=",
+    description:
+      "Equips students with knowledge in pharmaceutical sciences, drug dispensing and patient care.",
+    image: "https://picsum.photos/id/180/800/400",
+    category: "School of Allied Health Sciences",
     requirements: [
       "UCE with at least a D in Biology, Chemistry, Physics, Mathematics and English",
       "UACE with at least a Principal Pass in Biology",
       "Two subsidiary passes in Chemistry, and Physics or Mathematics",
       "Must be 18 years of age or above at time of interview",
     ],
-    description:
-      "Equips students with knowledge in pharmaceutical sciences, drug dispensing and patient care.",
+    programHighlights: [
+      "Comprehensive pharmaceutical sciences and medicines management training",
+      "Practical experience in pharmacy dispensing and patient counselling",
+      "Advanced training in drug interactions and therapeutic uses",
+      "Prepares graduates for pharmacy registration and professional practice",
+    ],
+    careerOpportunities: [
+      "Registered Pharmacist in hospitals and pharmacies",
+      "Community pharmacy practitioner",
+      "Pharmaceutical sales representative",
+      "Medicines information specialist",
+      "Hospital pharmacist in specialized units",
+      "Pharmaceutical company quality assurance officer",
+    ],
+    relatedCourses: [4],
   },
   {
     id: 3,
@@ -35,12 +69,28 @@ export const courses = [
     title: "Certificate in Medical Laboratory Techniques",
     duration: "2 Years",
     fee: "2,400,000/=",
+    description:
+      "Provides foundational skills in medical laboratory procedures and diagnostic support.",
+    image: "https://picsum.photos/id/304/800/400",
+    category: "School of Allied Health Sciences",
     requirements: [
       "UCE with at least a D in Biology, Chemistry, Physics, Mathematics and English",
       "Must be 18 years of age or above at time of interview",
     ],
-    description:
-      "Provides foundational skills in medical laboratory procedures and diagnostic support.",
+    programHighlights: [
+      "Foundational training in laboratory testing and analysis procedures",
+      "Hands-on practice with essential laboratory equipment and techniques",
+      "Training in biosafety and infection control protocols",
+      "Prepares graduates for entry-level laboratory positions",
+    ],
+    careerOpportunities: [
+      "Laboratory Assistant in health facilities",
+      "Laboratory Support Staff in diagnostic centres",
+      "Blood bank assistant",
+      "Health worker in community health settings",
+      "Disease surveillance assistant",
+    ],
+    relatedCourses: [1],
   },
   {
     id: 4,
@@ -48,11 +98,27 @@ export const courses = [
     title: "Certificate in Pharmacy",
     duration: "2 Years",
     fee: "2,400,000/=",
+    description:
+      "Covers the basics of pharmacy practice, drug management and dispensing in health facilities.",
+    image: "https://picsum.photos/id/160/800/400",
+    category: "School of Allied Health Sciences",
     requirements: [
       "UCE with at least a D in Biology, Chemistry, Physics, Mathematics and English",
       "Must be 18 years of age or above at time of interview",
     ],
-    description:
-      "Covers the basics of pharmacy practice, drug management and dispensing in health facilities.",
+    programHighlights: [
+      "Core pharmaceutical sciences and basic medicines management",
+      "Training in pharmacy dispensing and patient care",
+      "Introduction to drug properties and therapeutic applications",
+      "Practical experience in pharmacy operations",
+    ],
+    careerOpportunities: [
+      "Pharmacy Assistant in clinics and pharmacies",
+      "Health facility pharmacy technician",
+      "Drug store attendant",
+      "Community health worker with pharmacy focus",
+      "Medicines distribution assistant in health programmes",
+    ],
+    relatedCourses: [2],
   },
 ];

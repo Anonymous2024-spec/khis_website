@@ -12,11 +12,11 @@ import CTABlock from "../components/CTABlock";
 import usePageTitle from "../hooks/usePageTitle";
 
 const icons = {
-  "Medical Laboratory Techniques": ( 
+  "Medical Laboratory Techniques": (
     <FlaskConical size={28} className="text-amber-400" />
   ),
   Pharmacy: <Pill size={28} className="text-amber-400" />,
-}
+};
 
 export default function Courses() {
   const [activeTab, setActiveTab] = useState("All");
@@ -125,6 +125,29 @@ export default function Courses() {
                       </div>
                     </div>
 
+                    {/* Tuition Breakdown */}
+                    <div className="bg-blue-50 rounded-md p-4 flex flex-col gap-3 border border-blue-100">
+                      <p className="text-sm font-semibold text-slate-700">
+                        Tuition by Sponsorship Type
+                      </p>
+                      <div className="flex flex-col gap-2 text-sm">
+                        <div className="flex justify-between items-center">
+                          <span className="text-slate-600">
+                            Half Sponsorship:
+                          </span>
+                          <span className="font-semibold text-blue-950">
+                            UGX 1,200,000/= per semester
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-slate-600">Private:</span>
+                          <span className="font-semibold text-blue-950">
+                            UGX 1,400,000/= per semester
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Entry Requirements */}
                     <div className="flex flex-col gap-3">
                       <p className="text-sm font-semibold text-slate-700">
@@ -148,7 +171,7 @@ export default function Courses() {
 
                     {/* Apply Button */}
                     <Link
-                      to="/apply"
+                      to={`/apply?course=${course.id}`}
                       className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold py-3 rounded-md transition-colors duration-200"
                     >
                       Apply for this Course <ChevronRight size={16} />

@@ -127,6 +127,7 @@ export default function News() {
                 onClick={() => {
                   setSearchQuery("");
                   setActiveCategory("All");
+
                 }}
                 className="text-sm text-amber-500 font-semibold hover:underline"
               >

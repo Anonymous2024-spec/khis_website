@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Clock,
   ChevronRight,
@@ -23,11 +23,16 @@ const courseStyles = {
 };
 
 export default function CourseCard({ course }) {
+  const navigate = useNavigate();
   const styleKey = Object.keys(courseStyles).find((key) =>
     course.title.includes(key),
   );
   const style =
     courseStyles[styleKey] || courseStyles["Medical Laboratory Techniques"];
+
+  const handleApplyClick = () => {
+    navigate(`/apply?course=${course.id}`);
+  };
 
   return (
     <div
@@ -123,12 +128,12 @@ export default function CourseCard({ course }) {
         </div>
 
         {/* CTA */}
-        <Link
-          to="/apply"
+        <button
+          onClick={handleApplyClick}
           className="mt-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-950 to-blue-900 hover:from-amber-500 hover:to-amber-400 text-white hover:text-blue-950 font-semibold py-3 rounded-xl transition-all duration-300 text-sm group-hover:shadow-md"
         >
           Apply for this Course <ChevronRight size={15} />
-        </Link>
+        </button>
       </div>
     </div>
   );
