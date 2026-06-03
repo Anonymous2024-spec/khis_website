@@ -26,12 +26,12 @@ const reasons = [
     description:
       "Our faculty are qualified and experienced medical professionals who bring real clinical knowledge into the classroom.",
   },
-  {
-    icon: <ShieldCheck size={28} className="text-amber-400" />,
-    title: "Internationally Supported",
-    description:
-      "Funded with support from partners in England, ensuring our programs meet both national and international health training standards.",
-  },
+  // {
+  //   icon: <ShieldCheck size={28} className="text-amber-400" />,
+  //   title: "Internationally Supported",
+  //   description:
+  //     "Funded with support from partners in England, ensuring our programs meet both national and international health training standards.",
+  // },
   {
     icon: <Building2 size={28} className="text-amber-400" />,
     title: "Modern Facilities",

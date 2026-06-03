@@ -10,7 +10,7 @@ const navLinks = [
   { label: "News", path: "/news" },
   { label: "Gallery", path: "/gallery" },
   { label: "Contact", path: "/contact" },
-  { label: "Partners", path: "/partners" },
+  // { label: "Partners", path: "/partners" },
 ];
 
 export default function Navbar() {

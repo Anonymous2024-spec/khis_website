@@ -184,10 +184,10 @@ export default function Contact() {
               <p className="text-slate-500 text-xs leading-relaxed">
                 Call us directly on{" "}
                 <a
-                  href="tel:0761150846"
+                  href="tel:+256777683228"
                   className="text-blue-950 font-bold hover:text-amber-500 transition-colors"
                 >
-                  0761150846
+                  +256 777 683 228
                 </a>{" "}
                 during working hours for the fastest response.
               </p>

@@ -28,7 +28,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/partners" element={<Partners />} />
+          {/* <Route path="/partners" element={<Partners />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
