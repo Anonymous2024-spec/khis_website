@@ -4,7 +4,7 @@ export const courses = [
     type: "Diploma",
     title: "Diploma in Medical Laboratory Techniques",
     duration: "3 Years",
-    fee: "2,400,000/=",
+    fee: "4,800,000/=",
     description:
       "Trains students in laboratory techniques and diagnostic procedures to support clinical medicine.",
     image: "https://picsum.photos/id/287/800/400",
@@ -36,7 +36,7 @@ export const courses = [
     type: "Diploma",
     title: "Diploma in Pharmacy",
     duration: "3 Years",
-    fee: "2,400,000/=",
+    fee: "4,800,000/=",
     description:
       "Equips students with knowledge in pharmaceutical sciences, drug dispensing and patient care.",
     image: "https://picsum.photos/id/180/800/400",
@@ -68,7 +68,7 @@ export const courses = [
     type: "Certificate",
     title: "Certificate in Medical Laboratory Techniques",
     duration: "2 Years",
-    fee: "2,400,000/=",
+    fee: "4,800,000/=",
     description:
       "Provides foundational skills in medical laboratory procedures and diagnostic support.",
     image: "https://picsum.photos/id/304/800/400",
@@ -97,7 +97,7 @@ export const courses = [
     type: "Certificate",
     title: "Certificate in Pharmacy",
     duration: "2 Years",
-    fee: "2,400,000/=",
+    fee: "4,800,000/=",
     description:
       "Covers the basics of pharmacy practice, drug management and dispensing in health facilities.",
     image: "https://picsum.photos/id/160/800/400",

@@ -1,27 +1,27 @@
-import { Users, BookOpen, Clock, Award } from 'lucide-react'
+import { Users, BookOpen, Clock, Award } from "lucide-react";
 
 const stats = [
   {
     icon: <BookOpen size={28} className="text-amber-400" />,
-    value: '4',
-    label: 'Programs Offered',
+    value: "4",
+    label: "Programs Offered",
   },
   {
     icon: <Clock size={28} className="text-amber-400" />,
-    value: '2-3 Yrs',
-    label: 'Program Duration',
+    value: "2-3 Yrs",
+    label: "Program Duration",
   },
   {
     icon: <Users size={28} className="text-amber-400" />,
-    value: '500+',
-    label: 'Students Trained',
+    value: "300+",
+    label: "Students Trained",
   },
   {
     icon: <Award size={28} className="text-amber-400" />,
-    value: '100%',
-    label: 'Dedicated to Excellence',
+    value: "100%",
+    label: "Dedicated to Excellence",
   },
-]
+];
 
 export default function StatsBanner() {
   return (
@@ -39,5 +39,5 @@ export default function StatsBanner() {
         ))}
       </div>
     </section>
-  )
+  );
 }

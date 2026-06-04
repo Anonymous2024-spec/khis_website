@@ -126,7 +126,7 @@ export default function Courses() {
                     </div>
 
                     {/* Tuition Breakdown */}
-                    <div className="bg-blue-50 rounded-md p-4 flex flex-col gap-3 border border-blue-100">
+                    {/* <div className="bg-blue-50 rounded-md p-4 flex flex-col gap-3 border border-blue-100">
                       <p className="text-sm font-semibold text-slate-700">
                         Tuition by Sponsorship Type
                       </p>
@@ -146,7 +146,7 @@ export default function Courses() {
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Entry Requirements */}
                     <div className="flex flex-col gap-3">

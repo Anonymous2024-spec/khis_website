@@ -24,7 +24,7 @@ const reasons = [
     icon: <UserCheck size={28} className="text-amber-400" />,
     title: "Experienced Instructors",
     description:
-      "Our faculty are qualified and experienced medical professionals who bring real clinical knowledge into the classroom.",
+      "Our instructors are qualified and experienced medical professionals who bring real clinical knowledge into the classroom.",
   },
   // {
   //   icon: <ShieldCheck size={28} className="text-amber-400" />,

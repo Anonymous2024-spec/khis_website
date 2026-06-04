@@ -9,63 +9,71 @@ const galleryItems = [
     category: "Laboratories",
     title: "Medical Laboratory",
     description: "Students conducting practical laboratory sessions.",
-    image: "https://picsum.photos/id/287/600/400",
+    image:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
   },
   {
     id: 2,
     category: "Laboratories",
     title: "Pharmacy Lab",
     description: "Pharmacy students working with medical equipment.",
-    image: "https://picsum.photos/id/180/600/400",
+    image:
+      "https://images.unsplash.com/photo-1612528443702-f6741f3a6f1f?w=600&h=400&fit=crop",
   },
   {
     id: 3,
     category: "Laboratories",
     title: "Lab Equipment",
     description: "Modern laboratory equipment for practical training.",
-    image: "https://picsum.photos/id/304/600/400",
+    image:
+      "https://images.unsplash.com/photo-1581093918261-8755ee1ef14e?w=600&h=400&fit=crop",
   },
   {
     id: 4,
     category: "Classrooms",
     title: "Lecture Hall",
     description: "A modern lecture hall for theory classes.",
-    image: "https://picsum.photos/id/160/600/400",
+    image:
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop",
   },
   {
     id: 5,
     category: "Classrooms",
     title: "Tutorial Room",
     description: "Small group tutorial and discussion sessions.",
-    image: "https://picsum.photos/id/20/600/400",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
   },
   {
     id: 6,
     category: "Events",
     title: "Graduation Ceremony",
     description: "Annual graduation ceremony celebrating our students.",
-    image: "https://picsum.photos/id/1/600/400",
+    image:
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=400&fit=crop",
   },
   {
     id: 7,
     category: "Events",
     title: "Orientation Day",
     description: "New students orientation and welcome program.",
-    image: "https://picsum.photos/id/26/600/400",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
   },
   {
     id: 8,
     category: "Facilities",
     title: "Library",
     description: "Our well stocked library and reading room.",
-    image: "https://picsum.photos/id/24/600/400",
+    image:
+      "https://images.unsplash.com/photo-1507842217343-583f20270319?w=600&h=400&fit=crop",
   },
   {
     id: 9,
     category: "Facilities",
     title: "Campus Grounds",
     description: "The main Kitgum campus grounds and buildings.",
-    image: "https://picsum.photos/id/164/600/400",
+    image: "/src/assets/compound.jpg",
   },
 ];
 const categories = [
