@@ -57,7 +57,7 @@ const values = [
 const stats = [
   { value: "4", label: "Programs Offered" },
   { value: "2-3", label: "Years Duration" },
-  { value: "500+", label: "Students Trained" },
+  { value: "300+", label: "Students Trained" },
   { value: "100%", label: "Dedicated to Excellence" },
 ];
 
@@ -112,15 +112,16 @@ export default function About() {
             </h2>
             <p className="text-slate-500 text-base leading-relaxed">
               Kitgum Institute of Health Sciences is a tertiary private medical
-              training institution located in Kitgum, Uganda. The institute's
+              training institution that was started in 2022 located in Kitgum, Uganda. The institute's
               main goal is to prepare students with a quality education that
               affords them the opportunity to achieve career through licensure,
               certification and other professional distinctions.
             </p>
             <p className="text-slate-500 text-base leading-relaxed">
-              With support from our partners in England, we continue to grow our
-              facilities, expand our programs and raise the standard of health
-              sciences education in northern Uganda and beyond.
+              With support from with support from Ministry of Education and
+              Sports, we continue to grow our facilities, expand our programs
+              and raise the standard of health sciences education in Northern
+              Uganda and beyond.
             </p>
             <div
               className="bg-gradient-to-r from-blue-950 to-blue-900 rounded-2xl px-6 py-5 flex items-start gap-4"
@@ -156,7 +157,7 @@ export default function About() {
                 textColor: "text-blue-950",
               },
               {
-                value: "500+",
+                value: "300+",
                 label: "Students Trained",
                 gradient: "from-slate-800 to-slate-700",
                 textColor: "text-amber-400",
