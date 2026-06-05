@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Calendar, Tag, Search } from "lucide-react";
 import { news } from "../data/news";
 import CTABlock from "../components/CTABlock";
-import usePageTitle from '../hooks/usePageTitle'
+import usePageTitle from "../hooks/usePageTitle";
 
 const categories = ["All", ...new Set(news.map((item) => item.category))];
 
@@ -21,10 +21,10 @@ export default function News() {
 
   return (
     <div>
-      {usePageTitle('News & Announcements')}
+      {usePageTitle("News & Announcements")}
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
           <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest">
@@ -56,7 +56,7 @@ export default function News() {
                 placeholder="Search news..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full border border-slate-200 rounded-md pl-9 pr-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition bg-white"
+                className="w-full border border-slate-200 rounded-md pl-9 pr-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition bg-white"
               />
             </div>
 
@@ -68,7 +68,7 @@ export default function News() {
                   onClick={() => setActiveCategory(cat)}
                   className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
                     activeCategory === cat
-                      ? "bg-blue-950 text-white"
+                      ? "bg-blue-700 text-white"
                       : "bg-white border border-slate-200 text-slate-600 hover:border-amber-400 hover:text-amber-500"
                   }`}
                 >
@@ -87,11 +87,11 @@ export default function News() {
                   className="bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col"
                 >
                   {/* Card Top Color Bar */}
-                  <div className="bg-blue-950 h-2 w-full" />
+                  <div className="bg-blue-700 h-2 w-full" />
 
                   <div className="p-6 flex flex-col gap-4 flex-1">
                     {/* Category Badge */}
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 w-fit flex items-center gap-1">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 w-fit flex items-center gap-1">
                       <Tag size={10} />
                       {item.category}
                     </span>
@@ -127,7 +127,6 @@ export default function News() {
                 onClick={() => {
                   setSearchQuery("");
                   setActiveCategory("All");
-
                 }}
                 className="text-sm text-amber-500 font-semibold hover:underline"
               >

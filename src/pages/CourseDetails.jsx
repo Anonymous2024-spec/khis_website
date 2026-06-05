@@ -29,7 +29,7 @@ export default function CourseDetails() {
           </p>
           <Link
             to="/courses"
-            className="inline-block bg-blue-950 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-md transition-colors"
+            className="inline-block bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition-colors"
           >
             View All Courses
           </Link>
@@ -58,7 +58,7 @@ export default function CourseDetails() {
             alt={course.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-700 via-blue-700/50 to-transparent" />
         </div>
 
         {/* Course Info Card - Overlapping */}
@@ -78,7 +78,7 @@ export default function CourseDetails() {
                 Duration
               </span>
               <div className="flex items-center gap-2">
-                <Clock size={20} className="text-blue-950" />
+                <Clock size={20} className="text-blue-700" />
                 <p className="text-slate-900 font-bold text-lg">
                   {course.duration}
                 </p>
@@ -91,7 +91,7 @@ export default function CourseDetails() {
                 Tuition Fee
               </span>
               <div className="flex items-center gap-2">
-                <DollarSign size={20} className="text-blue-950" />
+                <DollarSign size={20} className="text-blue-700" />
                 <p className="text-slate-900 font-bold text-lg">
                   UGX {course.fee}
                 </p>
@@ -102,7 +102,7 @@ export default function CourseDetails() {
             <div className="flex items-end">
               <button
                 onClick={handleApplyClick}
-                className="w-full bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold px-6 py-3 rounded-md transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-amber-500 hover:bg-amber-400 text-blue-700 font-semibold px-6 py-3 rounded-md transition-colors flex items-center justify-center gap-2"
               >
                 Apply Now <ArrowRight size={18} />
               </button>
@@ -164,7 +164,7 @@ export default function CourseDetails() {
             <ul className="space-y-3">
               {course.requirements.map((req, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <span className="text-blue-950 font-bold text-lg mt-0.5">
+                  <span className="text-blue-700 font-bold text-lg mt-0.5">
                     •
                   </span>
                   <span className="text-slate-700">{req}</span>
@@ -214,7 +214,7 @@ export default function CourseDetails() {
                   to={`/courses/${relatedCourse.id}`}
                   className="group bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="h-40 overflow-hidden bg-gradient-to-br from-blue-950 to-blue-900 flex items-center justify-center">
+                  <div className="h-40 overflow-hidden bg-gradient-to-br from-blue-700 to-blue-600 flex items-center justify-center">
                     <img
                       src={relatedCourse.image}
                       alt={relatedCourse.title}
@@ -232,7 +232,7 @@ export default function CourseDetails() {
                       <span className="text-sm text-slate-600">
                         {relatedCourse.duration}
                       </span>
-                      <span className="text-sm font-semibold text-blue-950">
+                      <span className="text-sm font-semibold text-blue-700">
                         UGX {relatedCourse.fee}
                       </span>
                     </div>

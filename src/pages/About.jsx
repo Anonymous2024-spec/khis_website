@@ -4,28 +4,28 @@ import usePageTitle from "../hooks/usePageTitle";
 
 const leadership = [
   {
-    name: "[Principal Name]",
+    name: "Candano Joseph",
     role: "Principal",
     description:
       "Oversees the academic and administrative functions of the institute.",
     initial: "P",
   },
   {
-    name: "[Deputy Principal Name]",
+    name: "Ocen Godfrey",
     role: "Deputy Principal",
     description:
       "Supports the principal in managing day to day operations of the institute.",
     initial: "D",
   },
   {
-    name: "[HOD Name]",
+    name: "Olanya Charles",
     role: "Head of Department — Medical Laboratory",
     description:
       "Leads the medical laboratory techniques department and clinical training.",
     initial: "H",
   },
   {
-    name: "[HOD Name]",
+    name: "Odong Solomon",
     role: "Head of Department — Pharmacy",
     description:
       "Leads the pharmacy department and oversees pharmaceutical training programs.",
@@ -67,21 +67,21 @@ export default function About() {
   return (
     <div className="bg-slate-50">
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
           <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest">
             Who We Are
           </span>
-          <h1 className="text-5xl font-bold text-white mt-3 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
             About KIHS
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl leading-relaxed">
             Learn about our background, mission, vision and the team behind
             Kitgum Institute of Health Sciences.
           </p>
-          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6" />
+          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6 accent-line-animate" />
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function About() {
               key={index}
               className="flex flex-col items-center text-center gap-2"
             >
-              <p className="text-4xl font-bold text-blue-950">{stat.value}</p>
+              <p className="text-4xl font-bold text-blue-700">{stat.value}</p>
               <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
             </div>
           ))}
@@ -112,23 +112,23 @@ export default function About() {
             </h2>
             <p className="text-slate-500 text-base leading-relaxed">
               Kitgum Institute of Health Sciences is a tertiary private medical
-              training institution that was started in 2022 located in Kitgum, Uganda. The institute's
-              main goal is to prepare students with a quality education that
-              affords them the opportunity to achieve career through licensure,
-              certification and other professional distinctions.
+              training institution that was started in 2022 located in Kitgum,
+              Uganda. The institute's main goal is to prepare students with a
+              quality education that affords them the opportunity to achieve
+              career through licensure, certification and other professional
+              distinctions.
             </p>
             <p className="text-slate-500 text-base leading-relaxed">
-              With support from with support from Ministry of Education and
-              Sports, we continue to grow our facilities, expand our programs
-              and raise the standard of health sciences education in Northern
-              Uganda and beyond.
+              With support from Ministry of Education and Sports, we continue to
+              grow our facilities, expand our programs and raise the standard of
+              health sciences education in Northern Uganda and beyond.
             </p>
             <div
-              className="bg-gradient-to-r from-blue-950 to-blue-900 rounded-2xl px-6 py-5 flex items-start gap-4"
+              className="bg-gradient-to-r from-blue-700 to-blue-600 rounded-2xl px-6 py-5 flex items-start gap-4"
               style={{ boxShadow: "0 10px 40px -10px rgba(30,58,95,0.4)" }}
             >
               <div className="bg-amber-400 rounded-full p-2 shrink-0 mt-0.5">
-                <BookOpen size={16} className="text-blue-950" />
+                <BookOpen size={16} className="text-blue-700" />
               </div>
               <div>
                 <p className="text-white font-bold text-base italic">
@@ -147,14 +147,14 @@ export default function About() {
               {
                 value: "4",
                 label: "Programs in Allied Health Sciences",
-                gradient: "from-blue-950 to-blue-900",
+                gradient: "from-blue-700 to-blue-600",
                 textColor: "text-amber-400",
               },
               {
                 value: "2-3 Yrs",
                 label: "Program Duration",
                 gradient: "from-amber-500 to-amber-400",
-                textColor: "text-blue-950",
+                textColor: "text-blue-700",
               },
               {
                 value: "300+",
@@ -165,7 +165,7 @@ export default function About() {
               {
                 value: "Kitgum",
                 label: "Uganda",
-                gradient: "from-blue-900 to-blue-800",
+                gradient: "from-blue-600 to-blue-500",
                 textColor: "text-amber-400",
               },
             ].map((card, i) => (
@@ -200,13 +200,13 @@ export default function About() {
               {
                 icon: <Target size={28} className="text-amber-400" />,
                 label: "Our Mission",
-                gradient: "from-blue-950 via-blue-900 to-blue-800",
+                gradient: "from-blue-700 via-blue-600 to-blue-500",
                 text: "To train highly skilled and motivated medical professionals who can serve nationally and internationally, upholding medical standards.",
               },
               {
                 icon: <Eye size={28} className="text-amber-400" />,
                 label: "Our Vision",
-                gradient: "from-slate-900 via-blue-950 to-slate-800",
+                gradient: "from-slate-900 via-blue-700 to-slate-800",
                 text: "To be one of the leading institutes of health sciences in Uganda, ensuring access to skilled health workers across the country and beyond.",
               },
             ].map((item, i) => (
@@ -259,13 +259,13 @@ export default function About() {
                     "0 4px 6px -1px rgba(0,0,0,0.07), 0 10px 40px -10px rgba(30,58,95,0.2)")
                 }
               >
-                <div className="bg-gradient-to-br from-blue-950 to-blue-800 p-3 rounded-xl w-fit shadow-md">
+                <div className="bg-gradient-to-br from-blue-700 to-blue-500 p-3 rounded-xl w-fit shadow-md">
                   {value.icon}
                 </div>
                 <h3 className="text-slate-900 font-bold text-base">
                   {value.title}
                 </h3>
-                <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500" />
+                <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 accent-line-animate" />
                 <p className="text-slate-500 text-sm leading-relaxed">
                   {value.description}
                 </p>
@@ -307,9 +307,9 @@ export default function About() {
                 }
               >
                 {/* Top Banner */}
-                <div className="bg-gradient-to-br from-blue-950 to-blue-900 pt-8 pb-10 px-6 flex flex-col items-center gap-3 relative overflow-hidden">
+                <div className="bg-gradient-to-br from-blue-700 to-blue-600 pt-8 pb-10 px-6 flex flex-col items-center gap-3 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center text-2xl font-bold text-blue-950 shadow-lg">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center text-2xl font-bold text-blue-700 shadow-lg">
                     {person.initial}
                   </div>
                 </div>

@@ -66,7 +66,7 @@ export default function Contact() {
   return (
     <div className="bg-slate-50">
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -80,7 +80,7 @@ export default function Contact() {
             Have questions about admissions, courses or anything else? Reach out
             and we will get back to you as soon as possible.
           </p>
-          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6" />
+          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6 accent-line-animate" />
         </div>
       </section>
 
@@ -104,7 +104,7 @@ export default function Contact() {
                   "0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 40px -10px rgba(30,58,95,0.15)")
               }
             >
-              <div className="bg-gradient-to-br from-blue-950 to-blue-800 p-2.5 rounded-xl shrink-0 shadow-md">
+              <div className="bg-gradient-to-br from-blue-700 to-blue-500 p-2.5 rounded-xl shrink-0 shadow-md">
                 {detail.icon}
               </div>
               <div className="flex flex-col gap-0.5">
@@ -144,7 +144,7 @@ export default function Contact() {
 
             {/* Map Card */}
             <div
-              className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 rounded-2xl overflow-hidden relative"
+              className="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 rounded-2xl overflow-hidden relative"
               style={{ boxShadow: "0 10px 40px -10px rgba(30,58,95,0.4)" }}
             >
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
@@ -163,7 +163,7 @@ export default function Contact() {
                   href="https://maps.google.com/?q=Kitgum,Uganda"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-blue-950 font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-200 shadow-md"
+                  className="bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-blue-700 font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-200 shadow-md"
                 >
                   View on Google Maps
                 </a>
@@ -185,7 +185,7 @@ export default function Contact() {
                 Call us directly on{" "}
                 <a
                   href="tel:+256777683228"
-                  className="text-blue-950 font-bold hover:text-amber-500 transition-colors"
+                  className="text-blue-700 font-bold hover:text-amber-500 transition-colors"
                 >
                   +256 777 683 228
                 </a>{" "}
@@ -215,7 +215,7 @@ export default function Contact() {
                     Thank you for reaching out. We have received your message
                     and will get back to you shortly. You can also call us
                     directly on{" "}
-                    <span className="font-bold text-blue-950">0761150846</span>.
+                    <span className="font-bold text-blue-700">0761150846</span>.
                   </p>
                 </div>
                 <button
@@ -229,7 +229,7 @@ export default function Contact() {
                       message: "",
                     });
                   }}
-                  className="bg-gradient-to-r from-blue-950 to-blue-900 hover:from-blue-900 hover:to-blue-800 text-white font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md"
+                  className="bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white font-bold px-8 py-3 rounded-xl transition-all duration-200 shadow-md"
                 >
                   Send Another Message
                 </button>
@@ -264,7 +264,7 @@ export default function Contact() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Your full name"
-                      className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition bg-slate-50 ${
+                      className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition bg-slate-50 ${
                         errors.name ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -282,7 +282,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@example.com"
-                      className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition bg-slate-50 ${
+                      className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition bg-slate-50 ${
                         errors.email ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -304,7 +304,7 @@ export default function Contact() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="07XXXXXXXX"
-                      className="border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition bg-slate-50"
+                      className="border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition bg-slate-50"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -315,7 +315,7 @@ export default function Contact() {
                       name="subject"
                       value={form.subject}
                       onChange={handleChange}
-                      className="border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition bg-slate-50"
+                      className="border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition bg-slate-50"
                     >
                       <option value="">Select a subject</option>
                       <option value="Admissions">Admissions Inquiry</option>
@@ -337,7 +337,7 @@ export default function Contact() {
                     onChange={handleChange}
                     rows={6}
                     placeholder="Write your message here..."
-                    className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition resize-none bg-slate-50 ${
+                    className={`border rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition resize-none bg-slate-50 ${
                       errors.message ? "border-red-400" : "border-slate-200"
                     }`}
                   />
@@ -349,7 +349,7 @@ export default function Contact() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-blue-950 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 shadow-md text-sm"
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-blue-700 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 shadow-md text-sm"
                 >
                   <Send size={16} /> Send Message
                 </button>

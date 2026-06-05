@@ -94,7 +94,7 @@ export default function Gallery() {
     <div>
       {usePageTitle("Gallery")}
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
@@ -120,7 +120,7 @@ export default function Gallery() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
                   activeCategory === cat
-                    ? "bg-blue-950 text-white"
+                    ? "bg-blue-700 text-white"
                     : "bg-white border border-slate-200 text-slate-600 hover:border-amber-400 hover:text-amber-500"
                 }`}
               >
@@ -144,7 +144,7 @@ export default function Gallery() {
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-blue-950/0 group-hover:bg-blue-950/40 transition-all duration-200 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-blue-700/0 group-hover:bg-blue-700/40 transition-all duration-200 flex items-center justify-center">
                     <ZoomIn
                       size={28}
                       className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -170,7 +170,7 @@ export default function Gallery() {
 
           {/* Upload Notice */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 flex flex-col gap-2 text-center">
-            <p className="text-blue-950 font-semibold text-base">
+            <p className="text-blue-700 font-semibold text-base">
               More photos coming soon
             </p>
             <p className="text-slate-500 text-sm">
@@ -225,7 +225,7 @@ export default function Gallery() {
             <div className="px-6 pb-6">
               <button
                 onClick={() => setSelectedItem(null)}
-                className="w-full flex items-center justify-center gap-2 bg-blue-950 hover:bg-blue-900 text-white font-semibold py-2.5 rounded-md transition-colors duration-200"
+                className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-md transition-colors duration-200"
               >
                 <X size={16} /> Close
               </button>

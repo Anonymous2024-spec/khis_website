@@ -19,9 +19,9 @@ const quickLinks = [
 ];
 
 const courses = [
-  "Diploma in Medical Laboratory Techniques",
+  "Diploma in Medical Laboratory Technology",
   "Diploma in Pharmacy",
-  "Certificate in Medical Laboratory Techniques",
+  "Certificate in Medical Laboratory Technology",
   "Certificate in Pharmacy",
 ];
 

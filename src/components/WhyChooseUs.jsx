@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="group flex flex-col gap-4 p-6 rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col gap-4 p-6 rounded-2xl bg-blue-50 transition-all duration-300 hover:-translate-y-1"
               style={{
                 boxShadow:
                   "0 4px 6px -1px rgba(0,0,0,0.07), 0 10px 40px -10px rgba(30,58,95,0.2)",
@@ -83,17 +83,17 @@ export default function WhyChooseUs() {
               }
             >
               {/* Icon */}
-              <div className="bg-gradient-to-br from-blue-950 to-blue-800 p-3 rounded-xl w-fit shadow-md">
+              <div className="bg-gradient-to-br from-blue-700 to-blue-500 p-3 rounded-xl w-fit shadow-md">
                 {reason.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-slate-900 font-bold text-base group-hover:text-blue-950 transition-colors duration-200">
+              <h3 className="text-slate-900 font-bold text-base group-hover:text-blue-700 transition-colors duration-200">
                 {reason.title}
               </h3>
 
               {/* Accent line */}
-              <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500" />
+              <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 accent-line-animate" />
 
               {/* Description */}
               <p className="text-slate-500 text-sm leading-relaxed">

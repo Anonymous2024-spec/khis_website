@@ -3,7 +3,7 @@ import { ArrowRight, PhoneCall } from "lucide-react";
 
 export default function CTABlock() {
   return (
-    <section className="bg-blue-950 py-16 px-6">
+    <section className="bg-blue-700 py-16 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Text */}
         <div className="flex flex-col gap-3 text-center md:text-left">
@@ -21,14 +21,14 @@ export default function CTABlock() {
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
           <Link
             to="/apply"
-            className="bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold px-6 py-3 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
+            className="bg-amber-500 hover:bg-amber-400 text-blue-700 font-semibold px-6 py-3 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
           >
             Apply Now <ArrowRight size={16} />
           </Link>
 
           <a
             href="tel:+256 777 683228"
-            className="border-2 border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-blue-950 font-semibold px-6 py-3 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
+            className="border-2 border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-blue-700 font-semibold px-6 py-3 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <PhoneCall size={16} /> Call Us
           </a>

@@ -16,7 +16,7 @@ export default function HeroSection() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
             Kitgum Institute of{" "}
             <span className="text-amber-400">Health Sciences</span>
           </h1>
@@ -61,7 +61,7 @@ export default function HeroSection() {
 
         {/* Right — Info Cards */}
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-          <div className="bg-blue-900 rounded-lg p-6 flex flex-col gap-3 border border-blue-800">
+          <div className="bg-blue-900 rounded-lg p-6 flex flex-col gap-3 border border-blue-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-105 cursor-pointer">
             <Award size={28} className="text-amber-400" />
             <h3 className="text-white font-semibold text-base">
               Diploma Programs
@@ -78,7 +78,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="bg-blue-900 rounded-lg p-6 flex flex-col gap-3 border border-blue-800">
+          <div className="bg-blue-900 rounded-lg p-6 flex flex-col gap-3 border border-blue-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-105 cursor-pointer">
             <FlaskConical size={28} className="text-amber-400" />
             <h3 className="text-white font-semibold text-base">
               Certificate Programs
@@ -95,7 +95,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="bg-amber-500 rounded-lg p-6 flex flex-col gap-2 sm:col-span-2">
+          <div className="bg-amber-500 rounded-lg p-6 flex flex-col gap-2 sm:col-span-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-105 cursor-pointer">
             <p className="text-blue-950 font-bold text-lg">UGX 4,800,000/=</p>
             <p className="text-blue-900 text-sm">
               Annual tuition fee for all Diploma & Certificate programs in

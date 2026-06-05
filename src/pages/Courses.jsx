@@ -29,7 +29,7 @@ export default function Courses() {
     <div>
       {usePageTitle("Our Courses")}
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
@@ -56,7 +56,7 @@ export default function Courses() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
                   activeTab === tab
-                    ? "bg-blue-950 text-white"
+                    ? "bg-blue-700 text-white"
                     : "bg-white border border-slate-200 text-slate-600 hover:border-amber-400 hover:text-amber-500"
                 }`}
               >
@@ -77,9 +77,9 @@ export default function Courses() {
                   className="bg-white border border-slate-200 rounded-lg overflow-hidden hover:shadow-lg hover:border-amber-400 transition-all duration-200"
                 >
                   {/* Card Top */}
-                  <div className="bg-blue-950 px-6 py-8 flex items-start justify-between">
+                  <div className="bg-blue-700 px-6 py-8 flex items-start justify-between">
                     <div className="flex flex-col gap-3">
-                      <div className="bg-blue-900 p-3 rounded-md w-fit">
+                      <div className="bg-blue-600 p-3 rounded-md w-fit">
                         {icons[iconKey]}
                       </div>
                       <h2 className="text-white font-bold text-xl leading-snug">
@@ -89,8 +89,8 @@ export default function Courses() {
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full shrink-0 ${
                         course.type === "Diploma"
-                          ? "bg-blue-800 text-blue-100"
-                          : "bg-amber-500 text-blue-950"
+                          ? "bg-blue-500 text-blue-100"
+                          : "bg-amber-500 text-blue-700"
                       }`}
                     >
                       {course.type}
@@ -110,7 +110,7 @@ export default function Courses() {
                         <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">
                           Duration
                         </p>
-                        <div className="flex items-center gap-2 text-blue-950 font-bold text-base">
+                        <div className="flex items-center gap-2 text-blue-700 font-bold text-base">
                           <Clock size={16} className="text-amber-400" />
                           {course.duration}
                         </div>
@@ -119,7 +119,7 @@ export default function Courses() {
                         <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">
                           Annual Fee
                         </p>
-                        <p className="text-blue-950 font-bold text-base">
+                        <p className="text-blue-700 font-bold text-base">
                           UGX {course.fee}
                         </p>
                       </div>
@@ -172,7 +172,7 @@ export default function Courses() {
                     {/* Apply Button */}
                     <Link
                       to={`/apply?course=${course.id}`}
-                      className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold py-3 rounded-md transition-colors duration-200"
+                      className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-blue-700 font-semibold py-3 rounded-md transition-colors duration-200"
                     >
                       Apply for this Course <ChevronRight size={16} />
                     </Link>
@@ -201,7 +201,7 @@ export default function Courses() {
             </div>
             <Link
               to="/apply"
-              className="bg-blue-950 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 shrink-0"
+              className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 shrink-0"
             >
               Start Application
             </Link>

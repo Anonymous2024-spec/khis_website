@@ -9,14 +9,14 @@ import {
 
 const courseStyles = {
   "Medical Laboratory Techniques": {
-    gradient: "from-blue-950 via-blue-900 to-blue-800",
-    badge: "bg-amber-500 text-blue-950",
+    gradient: "from-blue-700 via-blue-600 to-blue-500",
+    badge: "bg-amber-500 text-blue-700",
     icon: <FlaskConical size={28} className="text-amber-400" />,
     accent: "from-amber-400 to-amber-500",
   },
   Pharmacy: {
-    gradient: "from-slate-900 via-blue-950 to-slate-800",
-    badge: "bg-amber-500 text-blue-950",
+    gradient: "from-slate-900 via-blue-700 to-slate-800",
+    badge: "bg-amber-500 text-blue-700",
     icon: <Pill size={28} className="text-amber-400" />,
     accent: "from-amber-400 to-amber-500",
   },
@@ -84,17 +84,17 @@ export default function CourseCard({ course }) {
       {/* Overlap stats bar */}
       <div className="mx-4 -mt-5 bg-white rounded-xl shadow-lg border border-slate-100 px-4 py-3 flex items-center justify-between z-10 relative">
         <div className="flex flex-col items-center gap-0.5">
-          <p className="text-blue-950 font-bold text-sm">{course.duration}</p>
+          <p className="text-blue-700 font-bold text-sm">{course.duration}</p>
           <p className="text-slate-400 text-xs">Duration</p>
         </div>
         <div className="w-px h-8 bg-slate-200" />
         <div className="flex flex-col items-center gap-0.5">
-          <p className="text-blue-950 font-bold text-sm">UGX {course.fee}</p>
+          <p className="text-blue-700 font-bold text-sm">UGX {course.fee}</p>
           <p className="text-slate-400 text-xs">Per Year</p>
         </div>
         <div className="w-px h-8 bg-slate-200" />
         <div className="flex flex-col items-center gap-0.5">
-          <p className="text-blue-950 font-bold text-sm">UHPAB</p>
+          <p className="text-blue-700 font-bold text-sm">UHPAB</p>
           <p className="text-slate-400 text-xs">Accredited</p>
         </div>
       </div>
@@ -130,7 +130,7 @@ export default function CourseCard({ course }) {
         {/* CTA */}
         <button
           onClick={handleApplyClick}
-          className="mt-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-950 to-blue-900 hover:from-amber-500 hover:to-amber-400 text-white hover:text-blue-950 font-semibold py-3 rounded-xl transition-all duration-300 text-sm group-hover:shadow-md"
+          className="mt-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-700 to-blue-600 hover:from-amber-500 hover:to-amber-400 text-white hover:text-blue-700 font-semibold py-3 rounded-xl transition-all duration-300 text-sm group-hover:shadow-md"
         >
           Apply for this Course <ChevronRight size={15} />
         </button>

@@ -22,7 +22,7 @@ export default function Partners() {
   return (
     <div className="bg-slate-50">
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -37,7 +37,7 @@ export default function Partners() {
             international partners who share our commitment to quality health
             sciences education in Uganda.
           </p>
-          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6" />
+          <div className="h-1 w-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 mt-6 accent-line-animate" />
         </div>
       </section>
 
@@ -49,7 +49,7 @@ export default function Partners() {
               key={index}
               className="flex flex-col items-center text-center gap-2"
             >
-              <p className="text-4xl font-bold text-blue-950">{stat.value}</p>
+              <p className="text-4xl font-bold text-blue-700">{stat.value}</p>
               <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
             </div>
           ))}
@@ -80,7 +80,7 @@ export default function Partners() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-3">
               {/* Left — Visual */}
-              <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 p-12 flex flex-col items-center justify-center gap-6 text-center relative overflow-hidden">
+              <div className="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 p-12 flex flex-col items-center justify-center gap-6 text-center relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 relative z-10">
@@ -95,7 +95,7 @@ export default function Partners() {
                   </p>
                 </div>
                 <div className="h-px w-full bg-white/10 relative z-10" />
-                <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-blue-950 text-sm font-bold px-5 py-2 rounded-full shadow-md relative z-10">
+                <span className="bg-gradient-to-r from-amber-500 to-amber-400 text-blue-700 text-sm font-bold px-5 py-2 rounded-full shadow-md relative z-10">
                   Primary Funder
                 </span>
               </div>
@@ -106,7 +106,7 @@ export default function Partners() {
                   <h3 className="text-2xl font-bold text-slate-900">
                     UK Funding Partner
                   </h3>
-                  <div className="h-0.5 w-12 rounded-full bg-gradient-to-r from-amber-400 to-amber-500" />
+                  <div className="h-0.5 w-12 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 accent-line-animate" />
                   <p className="text-slate-500 text-base leading-relaxed">
                     Our primary funding partner based in England has provided
                     crucial support that has enabled Kitgum Institute of Health
@@ -119,7 +119,7 @@ export default function Partners() {
                 {/* Contributions */}
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2">
-                    <div className="bg-gradient-to-br from-blue-950 to-blue-800 p-2 rounded-lg">
+                    <div className="bg-gradient-to-br from-blue-700 to-blue-500 p-2 rounded-lg">
                       <HandshakeIcon size={16} className="text-amber-400" />
                     </div>
                     <p className="text-base font-bold text-slate-900">
@@ -132,7 +132,7 @@ export default function Partners() {
                         key={i}
                         className="flex items-start gap-3 bg-slate-50 rounded-xl p-4 border border-slate-100"
                       >
-                        <div className="bg-gradient-to-br from-blue-950 to-blue-800 p-1.5 rounded-lg shrink-0 mt-0.5">
+                        <div className="bg-gradient-to-br from-blue-700 to-blue-500 p-1.5 rounded-lg shrink-0 mt-0.5">
                           <Award size={12} className="text-amber-400" />
                         </div>
                         <p className="text-sm text-slate-600 font-medium">
@@ -160,7 +160,7 @@ export default function Partners() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left */}
-              <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 p-12 flex flex-col gap-6 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 p-12 flex flex-col gap-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
                 <span className="text-amber-400 text-sm font-semibold uppercase tracking-widest relative z-10">
                   Join Us
@@ -189,7 +189,7 @@ export default function Partners() {
                 <div className="flex flex-col gap-3">
                   <a
                     href="mailto:info@kihs.ac.ug"
-                    className="flex items-center gap-3 bg-gradient-to-r from-blue-950 to-blue-900 hover:from-blue-900 hover:to-blue-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 shadow-md text-sm"
+                    className="flex items-center gap-3 bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 shadow-md text-sm"
                   >
                     <ExternalLink size={16} />
                     Email Us — info@kihs.ac.ug

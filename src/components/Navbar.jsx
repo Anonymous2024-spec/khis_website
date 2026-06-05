@@ -18,15 +18,17 @@ export default function Navbar() {
   const location = useLocation();
 
   return (
-    <nav className="bg-blue-950 text-white shadow-md sticky top-0 z-50">
+    <nav className="bg-blue-700 text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo / Institute Name */}
         <Link to="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="KIHS Logo"
-            className="h-10 w-10 object-contain"
-          />
+          <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <img
+              src={logo}
+              alt="KIHS Logo"
+              className="h-8 w-8 object-contain"
+            />
+          </div>
           <span className="text-white font-bold text-sm leading-tight hidden lg:block">
             Kitgum Institute of
             <br />
@@ -34,12 +36,12 @@ export default function Navbar() {
           </span>
         </Link>
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-12 flex-1 justify-center">
           {navLinks.map((link) => (
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-amber-400 ${
+                className={`text-sm font-medium uppercase transition-colors hover:text-amber-400 ${
                   location.pathname === link.path
                     ? "text-amber-400 border-b-2 border-amber-400 pb-1"
                     : "text-gray-200"
@@ -53,7 +55,7 @@ export default function Navbar() {
         {/* Apply Button — desktop */}
         <Link
           to="/apply"
-          className="hidden md:inline-block bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold text-sm px-5 py-2 rounded-md transition-colors"
+          className="hidden md:inline-block bg-amber-500 hover:bg-amber-400 text-blue-700 font-semibold text-sm px-5 py-2 rounded-md transition-colors"
         >
           Apply Now
         </Link>
@@ -68,7 +70,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-blue-900 px-6 pb-6 flex flex-col gap-4">
+        <div className="md:hidden bg-blue-600 px-6 pb-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -86,7 +88,7 @@ export default function Navbar() {
           <Link
             to="/apply"
             onClick={() => setMenuOpen(false)}
-            className="bg-amber-500 hover:bg-amber-400 text-blue-950 font-semibold text-sm px-5 py-2 rounded-md text-center transition-colors"
+            className="bg-amber-500 hover:bg-amber-400 text-blue-700 font-semibold text-sm px-5 py-2 rounded-md text-center transition-colors"
           >
             Apply Now
           </Link>

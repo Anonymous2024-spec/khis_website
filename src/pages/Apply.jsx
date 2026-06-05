@@ -158,7 +158,7 @@ export default function Apply() {
             Thank you for applying to Kitgum Institute of Health Sciences. We
             have received your application and will be in touch shortly. Please
             call us on{" "}
-            <span className="font-semibold text-blue-950">0761150846</span> for
+            <span className="font-semibold text-blue-700">0761150846</span> for
             any inquiries.
           </p>
           <div className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 w-full">
@@ -174,7 +174,7 @@ export default function Apply() {
               setSubmitted(false);
               setCurrentStep(1);
             }}
-            className="bg-blue-950 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 w-full"
+            className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 w-full"
           >
             Submit Another Application
           </button>
@@ -186,7 +186,7 @@ export default function Apply() {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 py-24 px-6 relative overflow-hidden">
+      <section className="bg-blue-950 text-white py-12 sm:py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
@@ -229,19 +229,19 @@ export default function Apply() {
                   </h4>
                   <div className="bg-white rounded-lg p-5 border border-blue-100 shadow-sm">
                     <p className="text-xs text-slate-500 mb-2">DURATION</p>
-                    <p className="text-xl font-bold text-blue-950">
+                    <p className="text-xl font-bold text-blue-700">
                       {selectedCourse.duration}
                     </p>
                   </div>
                   <div className="bg-white rounded-lg p-5 border border-amber-100 shadow-sm">
                     <p className="text-xs text-slate-500 mb-2">ANNUAL FEE</p>
-                    <p className="text-xl font-bold text-blue-950">
+                    <p className="text-xl font-bold text-blue-700">
                       UGX {selectedCourse.fee}
                     </p>
                   </div>
                   <div className="bg-white rounded-lg p-5 border border-slate-100 shadow-sm">
                     <p className="text-xs text-slate-500 mb-2">COURSE TYPE</p>
-                    <p className="text-xl font-bold text-blue-950">
+                    <p className="text-xl font-bold text-blue-700">
                       {selectedCourse.type}
                     </p>
                   </div>
@@ -281,7 +281,7 @@ export default function Apply() {
                         key={idx}
                         className="flex items-start gap-2 text-xs text-slate-700"
                       >
-                        <span className="text-blue-950 font-bold mt-0.5 text-sm">
+                        <span className="text-blue-700 font-bold mt-0.5 text-sm">
                           ✓
                         </span>
                         <span>{req}</span>
@@ -319,7 +319,7 @@ export default function Apply() {
 
               {/* Right Column - Form Preview */}
               <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div className="relative h-48 bg-gradient-to-br from-blue-950 to-blue-900 overflow-hidden">
+                <div className="relative h-48 bg-gradient-to-br from-blue-700 to-blue-600 overflow-hidden">
                   {selectedCourse?.image && (
                     <img
                       src={selectedCourse.image}
@@ -360,9 +360,9 @@ export default function Apply() {
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-200 ${
                         currentStep === step.id
-                          ? "bg-blue-950 text-white shadow-lg"
+                          ? "bg-blue-700 text-white shadow-lg"
                           : currentStep > step.id
-                            ? "bg-amber-500 text-blue-950"
+                            ? "bg-amber-500 text-blue-700"
                             : "bg-white border-2 border-slate-200 text-slate-400"
                       }`}
                     >
@@ -375,7 +375,7 @@ export default function Apply() {
                     <span
                       className={`text-xs font-medium hidden sm:block ${
                         currentStep === step.id
-                          ? "text-blue-950 font-bold"
+                          ? "text-blue-700 font-bold"
                           : "text-slate-400"
                       }`}
                     >
@@ -420,7 +420,7 @@ export default function Apply() {
                       })}
                       type="text"
                       placeholder="Enter your full name"
-                      className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
+                      className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition ${
                         errors.fullName ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -442,7 +442,7 @@ export default function Apply() {
                           required: "Date of birth is required",
                         })}
                         type="date"
-                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
+                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition ${
                           errors.dateOfBirth
                             ? "border-red-400"
                             : "border-slate-200"
@@ -462,7 +462,7 @@ export default function Apply() {
                         {...register("gender", {
                           required: "Gender is required",
                         })}
-                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
+                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition ${
                           errors.gender ? "border-red-400" : "border-slate-200"
                         }`}
                       >
@@ -519,7 +519,7 @@ export default function Apply() {
                         })}
                         type="email"
                         placeholder="you@example.com"
-                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
+                        className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition ${
                           errors.email ? "border-red-400" : "border-slate-200"
                         }`}
                       />
@@ -561,7 +561,7 @@ export default function Apply() {
                       {...register("course", {
                         required: "Please select a course",
                       })}
-                      className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition ${
+                      className={`border rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition ${
                         errors.course ? "border-red-400" : "border-slate-200"
                       }`}
                     >
@@ -599,7 +599,7 @@ export default function Apply() {
                       <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
                         O-Level Results
                       </h3>
-                      <span className="text-xs bg-blue-100 text-blue-950 px-3 py-1 rounded-full font-semibold">
+                      <span className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">
                         Total Points: {calculatePoints(oLevelSubjects)}
                       </span>
                     </div>
@@ -1004,7 +1004,7 @@ export default function Apply() {
                         {...register(doc.name)}
                         type="file"
                         accept=".pdf,.jpg,.jpeg,.png"
-                        className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-950 transition file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-950 file:text-white hover:file:bg-blue-900"
+                        className="border border-slate-200 rounded-md px-4 py-2.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-700 transition file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-700 file:text-white hover:file:bg-blue-600"
                       />
                     </div>
                   ))}
@@ -1028,7 +1028,7 @@ export default function Apply() {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="flex items-center gap-2 px-8 py-3 rounded-lg border-2 border-slate-200 text-slate-700 hover:border-blue-950 hover:text-blue-950 hover:bg-blue-50 font-semibold transition-all duration-200"
+                    className="flex items-center gap-2 px-8 py-3 rounded-lg border-2 border-slate-200 text-slate-700 hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 font-semibold transition-all duration-200"
                   >
                     <ChevronLeft size={16} /> Back
                   </button>
@@ -1040,7 +1040,7 @@ export default function Apply() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-blue-950 to-blue-900 hover:from-blue-900 hover:to-blue-800 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                   >
                     Next <ChevronRight size={16} />
                   </button>
